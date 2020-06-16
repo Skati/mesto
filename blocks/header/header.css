@@ -1,3 +1,14 @@
-﻿.header{
-
+﻿@import url(./__logo/header__logo.css);
+@import url(./__line/header__line.css);
+.header{
+  margin: 0 auto;
+  max-width: 882px;
+  min-height: 74px;
+  display: flex;
+  border-bottom : 1px solid #545454;
+}
+@media screen and (max-width: 320px) {
+  .header {
+    min-height: 56px;
+  }
 }
