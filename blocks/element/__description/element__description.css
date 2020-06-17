@@ -1,3 +1,4 @@
 ﻿.element__description{
-
+  display: flex;
+  flex-wrap: nowrap;
 }
