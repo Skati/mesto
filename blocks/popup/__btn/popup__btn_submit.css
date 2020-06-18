@@ -9,3 +9,7 @@
   color: #FFFFFF;
   height: 50px;
 }
+.popup__btn_submit:hover{
+  opacity: 0.8;
+  cursor: pointer;
+}

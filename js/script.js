@@ -24,8 +24,9 @@ function popupClose(){
 
 function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    profileName.textContent=nameInput.value
-    profileDescription.textContent=jobInput.value
+    profileName.textContent=nameInput.value;
+    profileDescription.textContent=jobInput.value;
+    popupClose();
 }
 
 // // Прикрепляем обработчик к форме:
