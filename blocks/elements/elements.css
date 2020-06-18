@@ -5,3 +5,8 @@
   row-gap: 20px;
   padding: 0;
 }
+@media screen and (max-width: 768px) {
+  .root {
+    padding:0 19px;
+  }
+}

@@ -1,4 +1,6 @@
 ﻿.element__description{
   display: flex;
   flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 0 21px;
 }
