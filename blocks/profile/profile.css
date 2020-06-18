@@ -2,9 +2,10 @@
 @import url(./__info/profile__info.css);
 @import url(./__title/profile__title.css);
 @import url(./__name/profile__name.css);
-@import url(./__editbutton/profile__editbutton.css);
 @import url(./__description/profile__description.css);
-@import url(./__addbutton/profile__addbutton.css);
+@import url(./__btn/profile__btn_add.css);
+@import url(./__btn/profile__btn_edit.css);
+
 
 .profile{
   display: flex;

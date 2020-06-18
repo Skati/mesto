@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="Четвертая проектная работа yandex-practicum" />
+    <title>Место</title>
     <link rel="stylesheet" href="./pages/index.css" />
 </head>
 <body class="page">
@@ -17,73 +18,86 @@
           <div class="profile__info">
             <div class="profile__title">
               <p class="profile__name">Жак-Ив Кусто</p>
-              <button class="profile__editbutton"></button>
+              <button class="profile__btn_edit"></button>
             </div>
             <p class="profile__description">Исследователь океана</p>
           </div>
-          <button class="profile__addbutton"></button>
+          <button class="profile__btn_add"></button>
+        </section>
+        <section class="cards">
+          <ul class="elements">
+            <li class="element">
+              <div class="element__card">
+                <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="element__image">
+                <div class="element__description">
+                  <p class="element__name">Карачаевск</p>
+                  <img src="./images/like.svg" alt="like" class="element__like">
+                </div>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__card">
+                <img src="./images/elbrus.jpg" alt="Эльбрус" class="element__image">
+                <div class="element__description">
+                  <p class="element__name">Гора Эльбрус</p>
+                  <img src="./images/like.svg" alt="like" class="element__like">
+                </div>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__card">
+                <img src="./images/dombai.jpg" alt="Домбай" class="element__image">
+                <div class="element__description">
+                  <p class="element__name">Домбай</p>
+                  <img src="./images/like.svg" alt="like" class="element__like">
+                </div>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__card">
+                <img src="./images/elbrus.jpg" alt="Эльбрус" class="element__image">
+                <div class="element__description">
+                  <p class="element__name">Гора Эльбрус</p>
+                  <img src="./images/like.svg" alt="like" class="element__like">
+                </div>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__card">
+                <img src="./images/dombai.jpg" alt="Домбай" class="element__image">
+                <div class="element__description">
+                  <p class="element__name">Домбай</p>
+                  <img src="./images/like.svg" alt="like" class="element__like">
+                </div>
+              </div>
+            </li>
+            <li class="element">
+              <div class="element__card">
+                <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="element__image">
+                <div class="element__description">
+                  <p class="element__name">Карачаево-Черкессия</p>
+                  <img src="./images/like.svg" alt="like" class="element__like">
+                </div>
+              </div>
+            </li>
+          </ul>
         </section>
 
-        <ul class="elements">
-          <li class="element">
-            <div class="element__card">
-              <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="element__image">
-              <div class="element__description">
-                <p class="element__name">Карачаевск</p>
-                <img src="./images/like.svg" alt="like" class="element__like">
-              </div>
-            </div>
-          </li>
-          <li class="element">
-            <div class="element__card">
-              <img src="./images/elbrus.jpg" alt="Эльбрус" class="element__image">
-              <div class="element__description">
-                <p class="element__name">Гора Эльбрус</p>
-                <img src="./images/like.svg" alt="like" class="element__like">
-              </div>
-            </div>
-          </li>
-          <li class="element">
-            <div class="element__card">
-              <img src="./images/dombai.jpg" alt="Домбай" class="element__image">
-              <div class="element__description">
-                <p class="element__name">Домбай</p>
-                <img src="./images/like.svg" alt="like" class="element__like">
-              </div>
-            </div>
-          </li>
-          <li class="element">
-            <div class="element__card">
-              <img src="./images/elbrus.jpg" alt="Эльбрус" class="element__image">
-              <div class="element__description">
-                <p class="element__name">Гора Эльбрус</p>
-                <img src="./images/like.svg" alt="like" class="element__like">
-              </div>
-            </div>
-          </li>
-          <li class="element">
-            <div class="element__card">
-              <img src="./images/dombai.jpg" alt="Домбай" class="element__image">
-              <div class="element__description">
-                <p class="element__name">Домбай</p>
-                <img src="./images/like.svg" alt="like" class="element__like">
-              </div>
-            </div>
-          </li>
-          <li class="element">
-            <div class="element__card">
-              <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="element__image">
-              <div class="element__description">
-                <p class="element__name">Карачаево-Черкессия</p>
-                <img src="./images/like.svg" alt="like" class="element__like">
-              </div>
-            </div>
-          </li>
-        </ul>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia </p>
       </footer>
+      <div class="popup">
+        <form action="" method="get" class="popup__container" >
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input type="text" class="popup__input" name="popup__name">
+          <input type="text" class="popup__input" name="popup__description">
+          <button class="popup__btn_submit" type="submit">Сохранить</button>
+          <button class="popup__btn_close" type="button"></button>
+        </form>
+      </div>
+
       </main>
 
 </body>
 </html>
+<!-- TODO поправить файл шрифтов -->
