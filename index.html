@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -17,12 +17,12 @@
           <img src="./images/avatar.jpg" alt="Аватар Кусто" class="profile__avatar">
           <div class="profile__info">
             <div class="profile__title">
-              <p class="profile__name">Жак-Ив Кусто</p>
-              <button class="profile__btn_edit"></button>
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__button profile__button_type_edit"></button>
             </div>
             <p class="profile__description">Исследователь океана</p>
           </div>
-          <button class="profile__btn_add"></button>
+          <button class="profile__button profile__button_type_add"></button>
         </section>
         <section class="cards">
           <ul class="elements">
@@ -82,7 +82,7 @@
             </li>
           </ul>
         </section>
-
+      </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia </p>
       </footer>
@@ -90,13 +90,11 @@
         <form action="" method="get" class="popup__container" >
           <h2 class="popup__title">Редактировать профиль</h2>
           <input type="text" class="popup__input popup__input_name" name="popup__name">
-          <input type="text" class="popup__input popup__input_dedcription" name="popup__description">
-          <button class="popup__btn_submit" type="submit">Сохранить</button>
-          <button class="popup__btn_close" type="button"></button>
+          <input type="text" class="popup__input popup__input_description" name="popup__description">
+          <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
+          <button class="popup__button popup__button_type_close" type="button"></button>
         </form>
       </div>
-
-      </main>
       <script src="./js/script.js"></script>
 </body>
 </html>

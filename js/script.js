@@ -1,13 +1,13 @@
-﻿let formElement = document.querySelector('.popup__container');
-let popup = document.querySelector('.popup');
-let editButton = document.querySelector('.profile__btn_edit');
-let submitButton = document.querySelector('.popup__btn_submit');
-let closeButton = document.querySelector('.popup__btn_close');
-let profileName = document.querySelector('.profile__name');
-let profileDescription = document.querySelector('.profile__description');
+﻿const formElement = document.querySelector('.popup__container');
+const popup = document.querySelector('.popup');
+const editButton = document.querySelector('.profile__button_type_edit');
+const submitButton = document.querySelector('.popup__button_type_submit');
+const closeButton = document.querySelector('.popup__button_type_close');
+const profileName = document.querySelector('.profile__name');
+const profileDescription = document.querySelector('.profile__description');
 
-let nameInput = document.querySelector('.popup__input_name');
-let jobInput = document.querySelector('.popup__input_dedcription');
+const nameInput = document.querySelector('.popup__input_name');
+const jobInput = document.querySelector('.popup__input_description');
 
 editButton.addEventListener('click',popupShow);
 closeButton.addEventListener('click',popupClose);
@@ -23,12 +23,8 @@ function popupClose(){
 }
 
 function formSubmitHandler (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+    evt.preventDefault();
     profileName.textContent=nameInput.value;
     profileDescription.textContent=jobInput.value;
     popupClose();
 }
-
-// // Прикрепляем обработчик к форме:
-// // он будет следить за событием “submit” - «отправка»
-//

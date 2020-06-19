@@ -1,7 +1,8 @@
 ﻿@import url(./__title/popup__title.css);
 @import url(./__container/popup__container.css);
-@import url(./__btn/popup__btn_close.css);
-@import url(./__btn/popup__btn_submit.css);
+@import url(./__button/popup__button.css);
+@import url(./__button/_type/popup__button_type_submit.css);
+@import url(./__button/_type/popup__button_type_close.css);
 @import url(./__input/popup__input.css);
 .popup{
   position: fixed;
@@ -12,9 +13,7 @@
   bottom: 0;
   left: 0;
   background: rgba(0,0,0,0.5);
-
   z-index: 2;
-  display: flex;
   display: none;
   align-items: center;
   align-content: center;

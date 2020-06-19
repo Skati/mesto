@@ -1,0 +1,9 @@
+﻿.profile__button{
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid #FFFFFF;
+}
+.profile__button:hover{
+  cursor: pointer;
+  opacity: 0.6;
+}
