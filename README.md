@@ -22,9 +22,8 @@
 
 1. Flexbox
 2. Grid
-3. CSS Animation
-4. Adaptive design
-5. JS
+3. Adaptive design
+4. JS
 
 
 ## Credits

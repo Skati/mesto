@@ -1,5 +1,6 @@
 ﻿.element__name{
-  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   font-style: normal;
