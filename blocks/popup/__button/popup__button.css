@@ -1,6 +1,6 @@
 ﻿.popup__button{
 
 }
-.popup__button: :hover{
+.popup__button:hover{
   cursor: pointer;
 }

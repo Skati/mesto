@@ -16,7 +16,7 @@
 
 
 ## Использование
-[Ссылка на сайт](https://skati.github.io/russian-travel/)
+[Ссылка на сайт](https://skati.github.io/mesto/)
 
 ## Что нового
 
