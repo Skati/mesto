@@ -4,6 +4,7 @@
   outline: none;
   border: none;
   width: 21px;
+  min-width: 21px;;
   height: 18px;
 }
 
