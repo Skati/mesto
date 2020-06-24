@@ -8,6 +8,9 @@
   text-align: center;
   color: #FFFFFF;
   height: 50px;
+  -webkit-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 .popup__button_type_submit:hover{
   opacity: 0.8;

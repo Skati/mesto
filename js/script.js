@@ -28,3 +28,4 @@ function formSubmitHandler (evt) {
     profileDescription.textContent=jobInput.value;
     popupClose();
 }
+console.log(nameInput)

@@ -11,8 +11,12 @@
   padding:45px 199px 60px;
   max-width: 1200px;
 }
-
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1279px) {
+  .root {
+    padding:28px 50px 36px;
+  }
+}
+@media screen and (max-width: 1171px) {
   .root {
     padding:28px 0 36px;
   }
