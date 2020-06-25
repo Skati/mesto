@@ -4,7 +4,7 @@
 @import url(./__name/element__name.css);
 @import url(./__card/element__card.css);
 .element{
-  border-radius: 10px;
+  border-radius: 25px;
   background: #FFFFFF;
   overflow: hidden;
 
