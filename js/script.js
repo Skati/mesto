@@ -1,12 +1,16 @@
 ﻿const formElement = document.querySelector('.popup__container');
 const profilePopup = document.querySelector('.popup_type_profile');
 const addCardPopup = document.querySelector('.popup_type_add-card');
+const photoPopup = document.querySelector('popup_type_photo');
 const popup = document.querySelectorAll('.popup');
+
 
 const editButton = document.querySelector('.profile__button_type_edit');
 const submitButton = document.querySelector('.popup__button_type_submit');
 const addButton = document.querySelector('.profile__button_type_add');
 const closeButton = document.querySelector('.popup__button_type_close');
+const closeButtons = document.querySelectorAll('.popup__button_type_close');
+const imageLink = document.querySelector('.element__image');
 
 
 const profileName = document.querySelector('.profile__name');
@@ -46,6 +50,7 @@ const initialCards = [
 editButton.addEventListener('click',profilePopupShow);
 addButton.addEventListener('click',addCardPopupShow);
 formElement.addEventListener('submit', formSubmitHandler);
+photoPopup.addEventListener('click',addCardPopupShow);
 // closeButton.addEventListener('click', function () {
 //   popup.forEach((item) => {
 //     console.log('item');
@@ -53,11 +58,13 @@ formElement.addEventListener('submit', formSubmitHandler);
 //     console.log(item);
 //   });
 // });
-closeButton.addEventListener('click', function () {
-  popup.forEach((item) => {
-    item.removeAttribute("style","visibility: visible;opacity: 1;");
+for(let i = 0; i<=closeButtons.length;i++){
+  closeButtons[i].addEventListener('click', function () {
+  popup[i].removeAttribute("style","visibility: visible;opacity: 1;");
   });
-});
+  }
+
+
 function profilePopupShow(){
   popup[0].setAttribute("style", "visibility: visible;opacity: 1;");
   nameInput.value = profileName.textContent;
@@ -67,6 +74,9 @@ function addCardPopupShow(){
  popup[1].setAttribute("style", "visibility: visible;opacity: 1;");
 }
 
+function imagePopupShow(){
+  popup[2].setAttribute("style", "visibility: visible;opacity: 1;");
+}
 
 
 function formSubmitHandler (evt) {
