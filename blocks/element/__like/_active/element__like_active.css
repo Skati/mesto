@@ -1,0 +1,10 @@
+﻿.element__like_active{
+  background: url(./../../../../images/like_active.svg) no-repeat center center;
+  background-size: contain;
+  outline: none;
+  border: none;
+  width: 21px;
+  min-width: 21px;
+  height: 19px;
+  padding: 0;
+}
