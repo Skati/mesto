@@ -4,7 +4,6 @@ const addCardPopup = document.querySelector('.popup_type_add-card');
 const photoPopup = document.querySelector('popup_type_photo');
 const popup = document.querySelectorAll('.popup');
 
-
 const editButton = document.querySelector('.profile__button_type_edit');
 const submitButton = document.querySelector('.popup__button_type_submit');
 const addButton = document.querySelector('.profile__button_type_add');
