@@ -25,9 +25,9 @@
           <button class="profile__button profile__button_type_add"></button>
         </section>
         <section class="cards">
-          <ul class="elements">
+          <ul class="elements"><!--
             <li class="element">
-                <a  class="element__image" href=""><img src="./images/karachaevsk.jpg" alt="Карачаевск" class="element__image"></a>
+                <a href=""><img class="element__image" src="./images/karachaevsk.jpg" alt="Карачаевск" class="element__image"></a>
                 <div class="element__description">
                   <p class="element__name">Карачаевск</p>
                   <button class="element__like"></button>
@@ -67,18 +67,18 @@
                   <p class="element__name">Карачаево-Черкессия</p>
                   <button class="element__like"></button>
                 </div>
-            </li>
+            </li> -->
           </ul>
         </section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia </p>
       </footer>
-      <!-- <div class="popup popup_type_profile">
+      <div class="popup popup_type_profile">
         <form method="get" class="popup__container" >
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" class="popup__input popup__input_name" name="popup__name">
-          <input type="text" class="popup__input popup__input_description" name="popup__description">
+          <input type="text" class="popup__input popup__input_type_name" name="popup__input_type_name">
+          <input type="text" class="popup__input popup__input_type_description" name="popup__input_type_description">
           <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
           <button class="popup__button popup__button_type_close" type="button"></button>
         </form>
@@ -86,12 +86,12 @@
       <div class="popup popup_type_add-card">
         <form method="get" class="popup__container" >
           <h2 class="popup__title">Новое место</h2>
-          <input type="text" class="popup__input popup__input_name" name="popup__name" placeholder="Название">
-          <input type="text" class="popup__input popup__input_description" name="popup__description" placeholder="Ссылка на картинку">
+          <input type="text" class="popup__input popup__input_type_image-name" name="popup__input_type_image-name" placeholder="Название">
+          <input type="text" class="popup__input popup__input_type_image-link" name="popup__input_type_image-link" placeholder="Ссылка на картинку">
           <button class="popup__button popup__button_type_submit" type="submit">Создать</button>
           <button class="popup__button popup__button_type_close" type="button"></button>
         </form>
-      </div> -->
+      </div>
       <div class="popup popup_type_photo">
         <figure class="popup__container popup__container_type_image">
           <img class = "popup__image" src="./images/karachaevsk.jpg" alt="">
@@ -102,7 +102,7 @@
       </form>
       <template id = "element">
         <li class="element">
-                <a class="element__image" href="#"><img src="#" alt=""></a>
+                <a href="#"><img class="element__image" src="" alt=""></a>
                 <div class="element__description">
                   <p class="element__name"></p>
                   <button class="element__like"></button>
