@@ -58,10 +58,7 @@ function createCard(name,link){
   cardLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
-  // photoLink.addEventListener('click', () => {
-  //   togglePopup(photoPopup);
-  // });
-  console.log(photoLink);
+
   cardContainer.append(cardElement);
 }
 // function addCard(card){
