@@ -48,7 +48,7 @@ const initialCards = [
   }
 ];
 
-function addCard(name,link){
+function createCard(name,link){
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
   const cardLike = cardElement.querySelector('.element__like');
@@ -68,8 +68,10 @@ function addCard(name,link){
 
 // }
 initialCards.forEach((item) => {
-  addCard(item.name,item.link);
-    });
+  createCard(item.name,item.link);
+});
+
+
 function togglePopup(popup) {
   popup.classList.toggle('popup_is-opened');
 }
