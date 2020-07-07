@@ -17,9 +17,12 @@ const addCardSubmitButton = addCardPopup.querySelector('.popup__button_type_subm
 const addCardCloseButton = addCardPopup.querySelector('.popup__button_type_close');
 const imageLink = document.querySelector('.popup__input_type_image-link');
 const imageName = document.querySelector('.popup__input_type_image-name');
+// const cardDescription = document.querySelector('.popup__description');
+// const cardLink = document.querySelector('.popup__image');
 //photo popup
 const photoPopup = document.querySelector('.popup_type_photo');
-const photoLink = document.querySelector('.element__link');
+const photoView = document.querySelector('.popup__image');
+const photoDescription = document.querySelector('.popup__description');
 const photoCloseButton = photoPopup.querySelector('.popup__button_type_close');
 const initialCards = [
   {
@@ -48,33 +51,44 @@ const initialCards = [
   }
 ];
 
-function createCard(name,link){
+function createCard(elem){
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
   const cardLike = cardElement.querySelector('.element__like');
-  cardImage.src = link;
-  cardImage.alt = name;
-  cardImage.textContent = name;
+  const photoLink = cardElement.querySelector('.element__link');
+  const elementTrash = cardElement.querySelector('.element__trash');
+  const cardDescription = cardElement.querySelector('.element__name');
+  cardImage.src = elem.link;//TODO : нихуя не понятно element.querySelector('.element_name').textContent = elem.name
+  cardImage.alt = elem.name;
+  cardDescription.textContent = elem.name;
+
   cardLike.addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
 
-  cardContainer.append(cardElement);
+  photoLink.addEventListener('click', showCard);
+  elementTrash.addEventListener('click',deleteCard);
+  return cardElement;
 }
-// function addCard(card){
-
-// }
-initialCards.forEach((item) => {
-  createCard(item.name,item.link);
-});
-
+function addCard(item){
+  initialCards.forEach((item) => {
+    cardContainer.prepend(createCard(item));
+  });
+}
+function showCard(evt){
+  photoView.src = evt.target.src;
+  photoDescription.textContent = evt.target.alt;
+  photoDescription.alt = evt.target.alt;
+  togglePopup(photoPopup);
+}
+function deleteCard(item){
+  item.currentTarget.closest('.element').remove();
+}
 
 function togglePopup(popup) {
   popup.classList.toggle('popup_is-opened');
 }
-//edit popup
-console.log(photoLink);
-editButton.addEventListener('click', () => {
+  editButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
   togglePopup(editFormPopup);
@@ -102,3 +116,14 @@ addCardCloseButton.addEventListener('click', () => {
 photoCloseButton.addEventListener('click', () => {
   togglePopup(photoPopup);
 });
+addCardSubmitButton.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  let card = {
+    name: imageName.value,
+    link: imageLink.value
+};
+  cardContainer.prepend(createCard(card));
+  togglePopup(addCardPopup);
+
+});
+addCard();
