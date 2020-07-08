@@ -24,6 +24,8 @@
 2. Grid
 3. Adaptive design
 4. JS
+5. Popups
+6. Удаление, добавление карточек, лайки
 
 
 ## Credits
