@@ -48,9 +48,11 @@ const initialCards = [{
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-function like(evt){
+
+function like(evt) {
   evt.target.classList.toggle('element__like_active');
 }
+
 function createCard(elem) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
@@ -61,7 +63,7 @@ function createCard(elem) {
   cardImage.src = elem.link;
   cardImage.alt = elem.name;
   cardDescription.textContent = elem.name;
-  cardLike.addEventListener('click',like);
+  cardLike.addEventListener('click', like);
   photoLink.addEventListener('click', showCard);
   elementTrash.addEventListener('click', deleteCard);
   return cardElement;
@@ -87,6 +89,7 @@ function deleteCard(item) {
 function togglePopup(popup) {
   popup.classList.toggle('popup_is-opened');
 }
+
 buttonEdit.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
