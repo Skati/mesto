@@ -9,4 +9,6 @@
   background: #FFFFFF;
   overflow: hidden;
   position: relative;
+  max-height: 362px;
+  height: 362px;
 }
