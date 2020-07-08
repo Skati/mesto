@@ -1,6 +1,6 @@
 ﻿const cardTemplate = document.querySelector('#element').content;
 //редактирование профиля
-const editButton = document.querySelector('.profile__button_type_edit');
+const buttonEdit = document.querySelector('.profile__button_type_edit');
 const editFormPopup = document.querySelector('.popup_type_profile');
 const editFormSubmitButton = editFormPopup.querySelector('.popup__button_type_submit');
 const editFormCloseButton = editFormPopup.querySelector('.popup__button_type_close');
@@ -12,9 +12,9 @@ const jobInput = document.querySelector('.popup__input_type_description');
 //добавление карточек
 const cardContainer = document.querySelector('.elements');
 const addCardPopup = document.querySelector('.popup_type_add-card');
-const addButton = document.querySelector('.profile__button_type_add');
-const addCardSubmitButton = addCardPopup.querySelector('.popup__button_type_submit');
-const addCardCloseButton = addCardPopup.querySelector('.popup__button_type_close');
+const buttonAdd = document.querySelector('.profile__button_type_add');
+const submitButtonAddCard = addCardPopup.querySelector('.popup__button_type_submit');
+const closeButtonAddCard = addCardPopup.querySelector('.popup__button_type_close');
 const imageLink = document.querySelector('.popup__input_type_image-link');
 const imageName = document.querySelector('.popup__input_type_image-name');
 
@@ -23,34 +23,35 @@ const photoPopup = document.querySelector('.popup_type_photo');
 const photoView = document.querySelector('.popup__image');
 const photoDescription = document.querySelector('.popup__description');
 const photoCloseButton = photoPopup.querySelector('.popup__button_type_close');
-const initialCards = [
-  {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+const initialCards = [{
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
-function createCard(elem){
+function like(evt){
+  evt.target.classList.toggle('element__like_active');
+}
+function createCard(elem) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
   const cardLike = cardElement.querySelector('.element__like');
@@ -60,34 +61,33 @@ function createCard(elem){
   cardImage.src = elem.link;
   cardImage.alt = elem.name;
   cardDescription.textContent = elem.name;
-
-  cardLike.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('element__like_active');
-  });
-
+  cardLike.addEventListener('click',like);
   photoLink.addEventListener('click', showCard);
-  elementTrash.addEventListener('click',deleteCard);
+  elementTrash.addEventListener('click', deleteCard);
   return cardElement;
 }
-function addCard(item){
-  initialCards.forEach((item) => {
-    cardContainer.prepend(createCard(item));
+
+function renderCards() {
+  initialCards.forEach((cardElement) => {
+    cardContainer.prepend(createCard(cardElement));
   });
 }
-function showCard(evt){
+
+function showCard(evt) {
   photoView.src = evt.target.src;
   photoDescription.textContent = evt.target.alt;
   photoDescription.alt = evt.target.alt;
   togglePopup(photoPopup);
 }
-function deleteCard(item){
+
+function deleteCard(item) {
   item.currentTarget.closest('.element').remove();
 }
 
 function togglePopup(popup) {
   popup.classList.toggle('popup_is-opened');
 }
-  editButton.addEventListener('click', () => {
+buttonEdit.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
   togglePopup(editFormPopup);
@@ -95,34 +95,27 @@ function togglePopup(popup) {
 
 editFormSubmitButton.addEventListener('click', (evt) => {
   evt.preventDefault();
-  profileName.textContent=nameInput.value;
-  profileDescription.textContent=jobInput.value;
+  profileName.textContent = nameInput.value;
+  profileDescription.textContent = jobInput.value;
   togglePopup(editFormPopup);
 });
 
-editFormCloseButton.addEventListener('click', () => {
-  togglePopup(editFormPopup);
-});
+editFormCloseButton.addEventListener('click', () => togglePopup(editFormPopup));
 //add popup
-addButton.addEventListener('click', () => {
-  togglePopup(addCardPopup);
-});
+buttonAdd.addEventListener('click', () => togglePopup(addCardPopup));
 
-addCardCloseButton.addEventListener('click', () => {
-  togglePopup(addCardPopup);
-});
+closeButtonAddCard.addEventListener('click', () => togglePopup(addCardPopup));
 
-photoCloseButton.addEventListener('click', () => {
-  togglePopup(photoPopup);
-});
-addCardSubmitButton.addEventListener('click', (evt) => {
+photoCloseButton.addEventListener('click', () => togglePopup(photoPopup));
+
+submitButtonAddCard.addEventListener('click', (evt) => {
   evt.preventDefault();
-  let card = {
+  const card = {
     name: imageName.value,
     link: imageLink.value
-};
+  };
   cardContainer.prepend(createCard(card));
   togglePopup(addCardPopup);
 
 });
-addCard();
+renderCards();
