@@ -64,7 +64,12 @@ function createCard(elem) {
   cardImage.alt = elem.name;
   cardDescription.textContent = elem.name;
   cardLike.addEventListener('click', like);
-  photoLink.addEventListener('click', showCard);
+  photoLink.addEventListener('click', function(name,link){
+    photoView.src = elem.link;
+    photoDescription.textContent = elem.name;
+    photoDescription.alt = elem.name;
+    togglePopup(photoPopup);
+  });
   elementTrash.addEventListener('click', deleteCard);
   return cardElement;
 }
@@ -73,13 +78,6 @@ function renderCards() {
   initialCards.forEach((cardElement) => {
     cardContainer.prepend(createCard(cardElement));
   });
-}
-
-function showCard(evt) {
-  photoView.src = evt.target.src;
-  photoDescription.textContent = evt.target.alt;
-  photoDescription.alt = evt.target.alt;
-  togglePopup(photoPopup);
 }
 
 function deleteCard(item) {
