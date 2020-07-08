@@ -58,7 +58,7 @@ function createCard(elem){
   const photoLink = cardElement.querySelector('.element__link');
   const elementTrash = cardElement.querySelector('.element__trash');
   const cardDescription = cardElement.querySelector('.element__name');
-  cardImage.src = elem.link;//TODO : нихуя не понятно element.querySelector('.element_name').textContent = elem.name
+  cardImage.src = elem.link;
   cardImage.alt = elem.name;
   cardDescription.textContent = elem.name;
 
