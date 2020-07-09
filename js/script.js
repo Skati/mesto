@@ -73,7 +73,7 @@ function showCard(name,link){
     photoDescription.textContent = name;
     photoDescription.alt = name;
     togglePopup(photoPopup);
-  };
+  }
 
 function renderCards() {
   initialCards.forEach((cardElement) => {
