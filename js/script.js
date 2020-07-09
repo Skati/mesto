@@ -64,15 +64,16 @@ function createCard(elem) {
   cardImage.alt = elem.name;
   cardDescription.textContent = elem.name;
   cardLike.addEventListener('click', like);
-  photoLink.addEventListener('click', function(name,link){
-    photoView.src = elem.link;
-    photoDescription.textContent = elem.name;
-    photoDescription.alt = elem.name;
-    togglePopup(photoPopup);
-  });
+  photoLink.addEventListener('click', () => showCard(cardDescription.textContent,cardImage.src));
   elementTrash.addEventListener('click', deleteCard);
   return cardElement;
 }
+function showCard(name,link){
+    photoView.src = link;
+    photoDescription.textContent = name;
+    photoDescription.alt = name;
+    togglePopup(photoPopup);
+  };
 
 function renderCards() {
   initialCards.forEach((cardElement) => {
