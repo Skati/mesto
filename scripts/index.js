@@ -25,6 +25,7 @@
 ];
 
 const cardTemplate = document.querySelector('#element').content;
+const popup = document.querySelector('.popup');
 //редактирование профиля
 const buttonEdit = document.querySelector('.profile__button_type_edit');
 const editFormPopup = document.querySelector('.popup_type_profile');
@@ -53,7 +54,7 @@ const photoCloseButton = photoPopup.querySelector('.popup__button_type_close');
 function like(evt) {
   evt.target.classList.toggle('element__like_active');
 }
-
+//TODO: сделать 2 функции на закрытие и открытие попапов
 function createCard(elem) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.element__image');
@@ -95,6 +96,7 @@ function closePopupByEsc(evt){
     popupOpened.closest('div').classList.remove('popup_is-opened');
   }
 }
+document.addEventListener('keydown', closePopupByEsc);
 
 buttonEdit.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
@@ -110,16 +112,34 @@ editFormSubmitButton.addEventListener('click', (evt) => {
   togglePopup(editFormPopup);
 });
 
-editFormCloseButton.addEventListener('click', () => togglePopup(editFormPopup));
+// editFormCloseButton.addEventListener('click', () => togglePopup(editFormPopup));
+editFormPopup.addEventListener('click', (evt) => {
+  if(evt.target.classList.contains('popup_is-opened') || evt.target.classList.contains('popup__button_type_close') ){
+    togglePopup(editFormPopup);
+  }
+
+});
 //add card
 buttonAdd.addEventListener('click', () => {
+  imageLink.value = '';
+  imageName.value = '';
   togglePopup(addCardPopup);
-  document.addEventListener('keydown', closePopupByEsc);
 });
 
-closeButtonAddCard.addEventListener('click', () => togglePopup(addCardPopup));
+// closeButtonAddCard.addEventListener('click', () => togglePopup(addCardPopup));
+addCardPopup.addEventListener('click', (evt) => {
+  if(evt.target.classList.contains('popup_is-opened') || evt.target.classList.contains('popup__button_type_close') ){
+    togglePopup(addCardPopup);
+  }
 
-photoCloseButton.addEventListener('click', () => togglePopup(photoPopup));
+});
+
+// photoCloseButton.addEventListener('click', () => togglePopup(photoPopup));
+photoPopup.addEventListener('click', (evt) => {
+  if(evt.target.classList.contains('popup_is-opened') || evt.target.classList.contains('popup__button_type_close') ){
+    togglePopup(photoPopup);
+  }
+});
 
 submitButtonAddCard.addEventListener('click', (evt) => {
   evt.preventDefault();
