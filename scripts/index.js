@@ -1,4 +1,30 @@
-﻿const cardTemplate = document.querySelector('#element').content;
+﻿const initialCards = [{
+  name: 'Архыз',
+  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+},
+{
+  name: 'Челябинская область',
+  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+},
+{
+  name: 'Иваново',
+  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+},
+{
+  name: 'Камчатка',
+  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+},
+{
+  name: 'Холмогорский район',
+  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+},
+{
+  name: 'Байкал',
+  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+}
+];
+
+const cardTemplate = document.querySelector('#element').content;
 //редактирование профиля
 const buttonEdit = document.querySelector('.profile__button_type_edit');
 const editFormPopup = document.querySelector('.popup_type_profile');
@@ -23,31 +49,6 @@ const photoPopup = document.querySelector('.popup_type_photo');
 const photoView = document.querySelector('.popup__image');
 const photoDescription = document.querySelector('.popup__description');
 const photoCloseButton = photoPopup.querySelector('.popup__button_type_close');
-const initialCards = [{
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 function like(evt) {
   evt.target.classList.toggle('element__like_active');
@@ -88,11 +89,18 @@ function deleteCard(item) {
 function togglePopup(popup) {
   popup.classList.toggle('popup_is-opened');
 }
+function closePopupByEsc(evt){
+  const popupOpened = document.querySelector('.popup_is-opened');
+  if (evt.code === 'Escape' && popupOpened){
+    popupOpened.closest('div').classList.remove('popup_is-opened');
+  }
+}
 
 buttonEdit.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
   togglePopup(editFormPopup);
+  document.addEventListener('keydown', closePopupByEsc);
 });
 
 editFormSubmitButton.addEventListener('click', (evt) => {
@@ -103,8 +111,11 @@ editFormSubmitButton.addEventListener('click', (evt) => {
 });
 
 editFormCloseButton.addEventListener('click', () => togglePopup(editFormPopup));
-//add popup
-buttonAdd.addEventListener('click', () => togglePopup(addCardPopup));
+//add card
+buttonAdd.addEventListener('click', () => {
+  togglePopup(addCardPopup);
+  document.addEventListener('keydown', closePopupByEsc);
+});
 
 closeButtonAddCard.addEventListener('click', () => togglePopup(addCardPopup));
 
@@ -120,4 +131,5 @@ submitButtonAddCard.addEventListener('click', (evt) => {
   togglePopup(addCardPopup);
 
 });
+
 renderCards();

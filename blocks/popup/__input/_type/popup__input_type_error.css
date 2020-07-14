@@ -1,8 +1,9 @@
 ﻿.popup__input_type_error{
+  display: block;
+  box-sizing: border-box;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 15px;
-
   color: #FF0000
 }

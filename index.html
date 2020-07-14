@@ -35,25 +35,27 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia </p>
     </footer>
     <div class="popup popup_type_profile">
-      <form method="get" class="popup__container">
+      <form class="popup__container" name="profile" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" class="popup__input popup__input_type_name" name="popup__input_type_name" minlength="2" maxlength="40" pattern="^[A-Za-zА-Яа-яЁё]+$" required>
-        <span class="popup__input_type_error"></span>
+        <input type="text" class="popup__input popup__input_type_name" name="popup__input_type_name" minlength="2" maxlength="40" required>
+        <!-- pattern="^[A-Za-zА-Яа-яЁё]+$" -->
+        <span class="popup__input_type_error" id="name-input-error"></span>
         <input type="text" class="popup__input popup__input_type_description" name="popup__input_type_description" minlength="2" maxlength="200" required>
-        <span class="popup__input_type_error"></span>
+        <span class="popup__input_type_error" id="description-input-error"></span>
         <button class="popup__button popup__button_type_submit" type="submit">Сохранить</button>
         <button class="popup__button popup__button_type_close" type="button"></button>
       </form>
     </div>
     <div class="popup popup_type_add-card">
-      <form method="get" class="popup__container">
+      <form class="popup__container" name="add_card" novalidate>
         <h2 class="popup__title">Новое место</h2>
         <input type="text" class="popup__input popup__input_type_image-name" name="popup__input_type_image-name"
           placeholder="Название" minlength="1" maxlength="30" required>
-        <span class="popup__input_type_error">Вы пропустили это поле</span>
-        <input type="text" class="popup__input popup__input_type_image-link" name="popup__input_type_image-link"
-          placeholder="Ссылка на картинку" pattern="https?://.+" required>
-        <span class="popup__input_type_error">Введите адрес сайта</span>
+        <span class="popup__input_type_error" id="image-name-error"></span>
+        <input type="url" class="popup__input popup__input_type_image-link" name="popup__input_type_image-link"
+          placeholder="Ссылка на картинку" required>
+          <!-- pattern="https?://.+"  -->
+        <span class="popup__input_type_error" id="image-url-error"></span>
         <button class="popup__button popup__button_type_submit" type="submit">Создать</button>
         <button class="popup__button popup__button_type_close" type="button"></button>
       </form>
@@ -76,7 +78,9 @@
       </li>
     </template>
   </div>
-  <script src="./js/script.js"></script>
+  <script src="./scripts/index.js"></script>
+  <!-- <script src="./scripts/validate.js"></script> -->
+
 </body>
 
 </html>
