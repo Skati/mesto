@@ -12,10 +12,6 @@
     -o-transition: opacity 1s ease-in-out;
     transition: opacity 1s ease-in-out;
 }
-/* .popup__button_type_submit:disabled{
-  background-color: white;
-  border: 1px solid #000000;
-  color: black;
-  pointer-events: none;
-  opacity: 0.2;
-} */
+.popup__button_type_submit:hover{
+  opacity: 0.8;
+}
