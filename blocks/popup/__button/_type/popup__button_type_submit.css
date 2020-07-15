@@ -15,3 +15,16 @@
 .popup__button_type_submit:hover{
   opacity: 0.8;
 }
+/* .popup__button_submit:disabled{
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+  pointer-events: none;
+  opacity: 0.2;
+} */

@@ -1,38 +1,60 @@
-﻿﻿function validate(input){
-  console.log(input.validity);
-}
-function getErrorMessage(input){
-  if (input.validity.valueMissing){
-    return 'Вы пропустили это поле';
-  }
-}
-function setError(){
-
-}
-function isUrl(input){
-  const regex = new RegExp('(http|ftp|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?')
-  return regex.test(input.value);
-}
-
-function enableValidation({formSelector,inputSelector,submitButtonSelector,inactiveButtonClass,inputErrorClass,errorClass}){
-  const forms = document.querySelectorAll(formSelector);
-  forms.forEach((form)=>{
-    console.log(form);
-    const inputs = form.querySelectorAll(inputSelector);
-    form.addEventListener('input',(evt) =>{
+﻿﻿
+const enableValidation = ({formSelector, ...rest}) => {
+  const forms = Array.from(document.querySelectorAll(formSelector));
+  // console.log(forms);
+  forms.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      if (form.checkValidity()){
-        inputs.forEach(validate);
-      }
-      else {
-        inputs.forEach(validate);
-      }
+    });
+    setEventListeners(formElement,{...rest});
+  });
+};
+function setEventListeners(formElement, {inputSelector, submitButtonSelector, inactiveButtonClass,inputErrorClass,errorClass, ...rest}){
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  const buttonElement = formElement.querySelector(submitButtonSelector);
+  actualizeButtonState(inputList, buttonElement,inactiveButtonClass);
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function () {
+      checkInputValidity(formElement, inputElement,inputErrorClass,errorClass);
+      actualizeButtonState(inputList, buttonElement,inactiveButtonClass);
     });
   });
+}
+
+const actualizeButtonState = (inputList, buttonElement, inactiveButtonClass) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.disabled = true;
+  } else {
+    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.disabled = false;
   }
+};
+const hasInvalidInput = (inputList) =>{
+  return inputList.some((inputElement) => {
+  return !inputElement.validity.valid;
+});
+};
+const checkInputValidity = (formElement,inputElement,inputErrorClass,errorClass) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputErrorClass,errorClass);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
 
+const showInputError = (formElement,inputElement,inputErrorClass, errorClass) => {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.add(inputErrorClass);
+  errorElement.classList.add(errorClass);
+  errorElement.textContent = inputElement.validationMessage;// TODO изменить для разных ошибок
+};
 
-
+function hideInputError(formElement,inputElement,errorClass) {
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.remove(errorClass);
+  errorElement.textContent = '';
+}
 
 enableValidation({
   formSelector: '.popup__form',

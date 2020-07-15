@@ -91,11 +91,15 @@ function togglePopup(popup) {
   popup.classList.toggle('popup_is-opened');
 }
 function closePopupByEsc(evt){
-  const popupOpened = document.querySelector('.popup_is-opened');
   if (evt.code === 'Escape' && popupOpened){
     popupOpened.closest('div').classList.remove('popup_is-opened');
   }
 }
+
+function closePopupByClick(evt){
+
+}
+
 document.addEventListener('keydown', closePopupByEsc);
 
 buttonEdit.addEventListener('click', () => {
