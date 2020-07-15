@@ -1,3 +1,4 @@
+﻿
 ﻿const initialCards = [{
   name: 'Архыз',
   link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -91,22 +92,17 @@ function togglePopup(popup) {
   popup.classList.toggle('popup_is-opened');
 }
 function closePopupByEsc(evt){
+  const popupOpened = document.querySelector('.popup_is-opened');
   if (evt.code === 'Escape' && popupOpened){
     popupOpened.closest('div').classList.remove('popup_is-opened');
   }
 }
-
-function closePopupByClick(evt){
-
-}
-
 document.addEventListener('keydown', closePopupByEsc);
 
 buttonEdit.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
   togglePopup(editFormPopup);
-  document.addEventListener('keydown', closePopupByEsc);
 });
 
 editFormSubmitButton.addEventListener('click', (evt) => {
@@ -121,7 +117,6 @@ editFormPopup.addEventListener('click', (evt) => {
   if(evt.target.classList.contains('popup_is-opened') || evt.target.classList.contains('popup__button_type_close') ){
     togglePopup(editFormPopup);
   }
-
 });
 //add card
 buttonAdd.addEventListener('click', () => {

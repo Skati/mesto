@@ -24,10 +24,10 @@ function setEventListeners(formElement, {inputSelector, submitButtonSelector, in
 const actualizeButtonState = (inputList, buttonElement, inactiveButtonClass) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.disabled = true;
+    buttonElement.setAttribute('disabled', true)
   } else {
     buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.disabled = false;
+    buttonElement.removeAttribute('disabled', true)
   }
 };
 const hasInvalidInput = (inputList) =>{
@@ -47,7 +47,7 @@ const showInputError = (formElement,inputElement,inputErrorClass, errorClass) =>
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(inputErrorClass);
   errorElement.classList.add(errorClass);
-  errorElement.textContent = inputElement.validationMessage;// TODO изменить для разных ошибок
+  errorElement.textContent = inputElement.validationMessage;
 };
 
 function hideInputError(formElement,inputElement,errorClass) {
