@@ -10,9 +10,6 @@
 @import url(./__button/popup__button.css);
 @import url(./__button/_type/popup__button_type_submit.css);
 @import url(./__button/_type/popup__button_type_close.css);
-/* @import url(./__button/_disabled/popup__button_disabled.css); */
-
-
 
 .popup{
   position: fixed;

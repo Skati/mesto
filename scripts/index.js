@@ -71,6 +71,7 @@ function createCard(elem) {
   elementTrash.addEventListener('click', deleteCard);
   return cardElement;
 }
+
 function showCard(name,link){
     photoView.src = link;
     photoDescription.textContent = name;
@@ -88,18 +89,16 @@ function deleteCard(item) {
   item.currentTarget.closest('.element').remove();
 }
 
-
 function openPopup(popup){
-  //функция удаления ошибок
   popup.classList.add('popup_is-opened');
   document.addEventListener('keyup', handleEscKey);
   resetForm(popup);
 }
+
 function closePopup(popup){
   popup.classList.remove('popup_is-opened');
   popup.removeEventListener('keyup', handleEscKey);
   const formElement = popup.querySelector('.popup__form');
-  // formElement.reset();
 }
 
 function handleEscKey(evt){
@@ -136,7 +135,6 @@ buttonEdit.addEventListener('click', () => {
     editFormSubmitButton.removeAttribute('disabled', true);
   }
   openPopup(editFormPopup);
-
 });
 
 editFormSubmitButton.addEventListener('click', (evt) => {
