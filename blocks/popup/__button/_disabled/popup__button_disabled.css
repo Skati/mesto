@@ -1,10 +1,11 @@
-﻿﻿.popup__button_disabled{
+﻿﻿.popup__button_disabled {
+}
+
+.popup__button_disabled:disabled{
   background-color: white;
   border: 1px solid #000000;
   color: black;
   pointer-events: none;
-  opacity: 0.2;
-}
-.popup__button_disabled:hover{
-  opacity: 0.2;
+  opacity: .2;
+  cursor: default;
 }
