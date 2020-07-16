@@ -90,11 +90,13 @@ function deleteCard(item) {
 
 function togglePopup(popup) {
   popup.classList.toggle('popup_is-opened');
+  // popup.reset();
 }
 function closePopupByEsc(evt){
   const popupOpened = document.querySelector('.popup_is-opened');
   if (evt.code === 'Escape' && popupOpened){
     popupOpened.closest('div').classList.remove('popup_is-opened');
+    // popupOpened.reset();
   }
 }
 document.addEventListener('keydown', closePopupByEsc);

@@ -4,6 +4,7 @@ const enableValidation = ({formSelector, ...rest}) => {
   // console.log(forms);
   forms.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
+      formElement.reset();
       evt.preventDefault();
     });
     setEventListeners({formElement,...rest});
@@ -25,11 +26,11 @@ function setEventListeners({formElement, inputSelector, submitButtonSelector,...
 const actualizeButtonState = ({inputList, buttonElement, inactiveButtonClass}) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.disabled=true;
+    buttonElement.setAttribute('disabled', true)
     console.log(buttonElement.classList);
   } else {
     buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.disabled=false;
+    buttonElement.removeAttribute('disabled', true)
   }
 };
 const hasInvalidInput = (inputList) =>{
@@ -42,10 +43,10 @@ const checkInputValidity = ({formElement,inputElement,...rest}) => {
     showInputError({formElement, inputElement,...rest});
     console.log(inputElement);
   } else {
-    // hideInputError({formElement, inputElement,...rest});
+    hideInputError({formElement, inputElement,...rest});
   }
 };
-
+//TODO reset validation message
 const showInputError = ({formElement,inputElement,errorClass,inputErrorClass,...rest}) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(inputErrorClass);
