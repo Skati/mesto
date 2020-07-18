@@ -20,13 +20,21 @@ function setEventListeners({formElement, inputSelector, submitButtonSelector, ..
   });
 }
 
+function disableButtonState(buttonElement,inactiveButtonClass){
+  buttonElement.classList.add(inactiveButtonClass);
+  buttonElement.setAttribute("disabled", true);
+}
+
+function enableButtonState(buttonElement,inactiveButtonClass){
+  buttonElement.classList.remove(inactiveButtonClass);
+  buttonElement.removeAttribute("disabled", true);
+}
+
 const actualizeButtonState = ({inputList, buttonElement, inactiveButtonClass}) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.setAttribute("disabled", true);
+    disableButtonState(buttonElement,inactiveButtonClass);
   } else {
-    buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.removeAttribute("disabled", true);
+    enableButtonState(buttonElement,inactiveButtonClass);
   }
 };
 
