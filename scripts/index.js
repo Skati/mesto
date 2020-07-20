@@ -120,8 +120,7 @@ function handleOverlayCrossButton(evt) {
 buttonEdit.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
-  editFormSubmitButton.classList.remove('popup__button_disabled');
-  editFormSubmitButton.removeAttribute('disabled', true);
+  enableButtonState(editFormSubmitButton,'popup__button_disabled');
   openPopup(editFormPopup);
   resetForm(editFormPopup);
 });
@@ -138,8 +137,7 @@ editFormPopup.addEventListener('click', handleOverlayCrossButton);
 buttonAdd.addEventListener('click', () => {
   imageLink.value = '';
   imageName.value = '';
-  submitButtonAddCard.classList.add('popup__button_disabled');
-  submitButtonAddCard.setAttribute('disabled', true);
+  disableButtonState(submitButtonAddCard ,'popup__button_disabled');
   openPopup(addCardPopup);
   resetForm(addCardPopup);
 });
