@@ -27,7 +27,6 @@ const initialCards = [{
   }
 ];
 const validateSettings = {
-  formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button_type_submit",
   inactiveButtonClass: "popup__button_disabled",
@@ -58,6 +57,8 @@ const photoView = document.querySelector('.popup__image');
 const photoDescription = document.querySelector('.popup__description');
 
 
+const ProfileValidation = new FormValidator(validateSettings,'form[name="profile"]');
+const AddCardValidation = new FormValidator(validateSettings,'form[name="add_card"]');
 
 function addCard(evt){
   evt.preventDefault();
@@ -110,9 +111,8 @@ function handleOverlayCrossButton(evt) {
 buttonEdit.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
-  enableButtonState(editFormSubmitButton,'popup__button_disabled');
+  ProfileValidation.enableValidation();
   openPopup(editFormPopup);
-  resetForm(editFormPopup);
 });
 
 editFormSubmitButton.addEventListener('click', (evt) => {
@@ -127,9 +127,8 @@ editFormPopup.addEventListener('click', handleOverlayCrossButton);
 buttonAdd.addEventListener('click', () => {
   imageLink.value = '';
   imageName.value = '';
-  disableButtonState(submitButtonAddCard ,'popup__button_disabled');
   openPopup(addCardPopup);
-  resetForm(addCardPopup);
+  AddCardValidation.enableValidation();
 });
 
 addCardPopup.addEventListener('click', handleOverlayCrossButton);
