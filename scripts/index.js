@@ -25,7 +25,6 @@
 ];
 
 const cardTemplate = document.querySelector('#element').content;
-const popup = document.querySelector('.popup');
 //редактирование профиля
 const buttonEdit = document.querySelector('.profile__button_type_edit');
 const editFormPopup = document.querySelector('.popup_type_profile');
