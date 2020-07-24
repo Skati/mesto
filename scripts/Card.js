@@ -1,4 +1,5 @@
 ﻿import { showCard } from "./index.js";
+// import { showCard } from "./utils.js";
 
 export default class Card{
   constructor(text,image){
