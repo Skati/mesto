@@ -1,4 +1,7 @@
-﻿const initialCards = [{
+﻿import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+export {showCard};
+const initialCards = [{
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
@@ -23,6 +26,13 @@
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+const validateSettings = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button_type_submit",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
 
 const cardTemplate = document.querySelector('#element').content;
 //редактирование профиля
@@ -45,33 +55,15 @@ const photoPopup = document.querySelector('.popup_type_photo');
 const photoView = document.querySelector('.popup__image');
 const photoDescription = document.querySelector('.popup__description');
 
-function like(evt) {
-  evt.target.classList.toggle('element__like_active');
-}
 
-function createCard(elem) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector('.element__image');
-  const cardLike = cardElement.querySelector('.element__like');
-  const photoLink = cardElement.querySelector('.element__link');
-  const elementTrash = cardElement.querySelector('.element__trash');
-  const cardDescription = cardElement.querySelector('.element__name');
-  cardImage.src = elem.link;
-  cardImage.alt = elem.name;
-  cardDescription.textContent = elem.name;
-  cardLike.addEventListener('click', like);
-  photoLink.addEventListener('click', () => showCard(cardDescription.textContent, cardImage.src));
-  elementTrash.addEventListener('click', deleteCard);
-  return cardElement;
-}
+const ProfileValidation = new FormValidator(validateSettings,'form[name="profile"]');
+const AddCardValidation = new FormValidator(validateSettings,'form[name="add_card"]');
 
-function addCard(evt) {
+function addCard(evt){
   evt.preventDefault();
-  const card = {
-    name: imageName.value,
-    link: imageLink.value
-  };
-  cardContainer.prepend(createCard(card));
+  const card = new Card(imageName.value,imageLink.value);
+  const cardElement = card.generateCard();
+  cardContainer.prepend(cardElement);
   closePopup(addCardPopup);
 }
 
@@ -83,15 +75,14 @@ function showCard(name, link) {
 }
 
 function renderCards() {
-  initialCards.forEach((cardElement) => {
-    cardContainer.prepend(createCard(cardElement));
-  });
-}
+    initialCards.forEach((item) => {
+      const card = new Card(item.name,item.link);
+      const cardElement = card.generateCard();
+      cardContainer.prepend(cardElement);
+    });
+  }
 
-function deleteCard(item) {
-  item.currentTarget.closest('.element').remove();
-}
-
+//popups
 function openPopup(popup) {
   popup.classList.add('popup_is-opened');
   document.addEventListener('keyup', handleEscKey);
@@ -119,9 +110,8 @@ function handleOverlayCrossButton(evt) {
 buttonEdit.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
-  enableButtonState(editFormSubmitButton,'popup__button_disabled');
+  ProfileValidation.enableValidation();
   openPopup(editFormPopup);
-  resetForm(editFormPopup);
 });
 
 editFormSubmitButton.addEventListener('click', (evt) => {
@@ -136,9 +126,8 @@ editFormPopup.addEventListener('click', handleOverlayCrossButton);
 buttonAdd.addEventListener('click', () => {
   imageLink.value = '';
   imageName.value = '';
-  disableButtonState(submitButtonAddCard ,'popup__button_disabled');
   openPopup(addCardPopup);
-  resetForm(addCardPopup);
+  AddCardValidation.enableValidation();
 });
 
 addCardPopup.addEventListener('click', handleOverlayCrossButton);
@@ -148,3 +137,5 @@ submitButtonAddCard.addEventListener('click', addCard);
 photoPopup.addEventListener('click', handleOverlayCrossButton);
 
 renderCards();
+
+

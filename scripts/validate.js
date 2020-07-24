@@ -1,4 +1,4 @@
-﻿﻿const enableValidation = ({formSelector, ...rest}) => {
+﻿﻿﻿const enableValidation = ({formSelector, ...rest}) => {
   const forms = Array.from(document.querySelectorAll(formSelector));
   forms.forEach((formElement) => {
     formElement.addEventListener("submit", (evt) => {
@@ -39,6 +39,7 @@ const actualizeButtonState = ({inputList, buttonElement, inactiveButtonClass}) =
 };
 
 const hasInvalidInput = (inputList) => {
+  console.log(inputElement.validity.valid)
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
@@ -54,8 +55,8 @@ const checkInputValidity = ({formElement, inputElement, ...rest}) => {
 
 const showInputError = ({formElement, inputElement, errorClass, inputErrorClass, ...rest}) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add(inputErrorClass);
-  errorElement.classList.add(errorClass);
+  inputElement.classList.add(errorClass);
+  errorElement.classList.add(inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
 };
 
