@@ -1,5 +1,5 @@
-﻿export default class FormValidator{
-  constructor(validateSettings,form){
+﻿export default class FormValidator {
+  constructor(validateSettings, form) {
     this._inputSelector = validateSettings.inputSelector;
     this._submitButtonSelector = validateSettings.submitButtonSelector;
     this._inactiveButtonClass = validateSettings.inactiveButtonClass;
@@ -8,18 +8,18 @@
     this._form = form;
   }
 
-  _disableButtonState(){
+  _disableButtonState() {
     this._buttonElement.classList.add(this._inactiveButtonClass);
     this._buttonElement.setAttribute("disabled", true);
 
   }
 
-  _enableButtonState(){
+  _enableButtonState() {
     this._buttonElement.classList.remove(this._inactiveButtonClass);
     this._buttonElement.removeAttribute("disabled", true);
   }
 
-  _actualizeButtonState(){
+  _actualizeButtonState() {
     if (this._hasInvalidInput()) {
       this._disableButtonState();
     } else {
@@ -76,7 +76,7 @@
     this._actualizeButtonState();
     this._resetForm();
     this._inputList.forEach((inputElement) => {
-      inputElement.addEventListener("input",() => {
+      inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
         this._actualizeButtonState();
       });
