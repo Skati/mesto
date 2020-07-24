@@ -34,7 +34,7 @@ const validateSettings = {
   errorClass: "popup__error_visible",
 };
 
-const cardTemplate = document.querySelector('#element').content;
+
 //редактирование профиля
 const buttonEdit = document.querySelector('.profile__button_type_edit');
 const editFormPopup = document.querySelector('.popup_type_profile');
@@ -54,8 +54,7 @@ const imageName = document.querySelector('.popup__input_type_image-name');
 const photoPopup = document.querySelector('.popup_type_photo');
 const photoView = document.querySelector('.popup__image');
 const photoDescription = document.querySelector('.popup__description');
-
-
+//classes
 const ProfileValidation = new FormValidator(validateSettings,'form[name="profile"]');
 const AddCardValidation = new FormValidator(validateSettings,'form[name="add_card"]');
 
