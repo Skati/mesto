@@ -9,43 +9,43 @@ export default class Card {
 
   _getTemplate() {
     const cardElement = document
-      .querySelector('#element') //TODO поменять на #card-template
+      .querySelector('#card-template')
       .content
-      .querySelector('.element') //TODO поменять на .card
+      .querySelector('.card')
       .cloneNode(true);
 
     return cardElement;
   }
 
   _like() {
-    this._element.querySelector('.element__like').classList.toggle('element__like_active');
+    this._card.querySelector('.card__like').classList.toggle('card__like_active');
   }
 
   _deleteCard() {
-    this._element.remove();
+    this._card.remove();
   }
 
   _setEventListeners() {
-    this._element.querySelector('.element__like').addEventListener('click', () => {
+    this._card.querySelector('.card__like').addEventListener('click', () => {
       this._like();
     });
 
-    this._element.querySelector('.element__trash').addEventListener('click', () => {
+    this._card.querySelector('.card__trash').addEventListener('click', () => {
       this._deleteCard();
     });
 
-    this._element.querySelector('.element__image').addEventListener('click', () => {
+    this._card.querySelector('.card__image').addEventListener('click', () => {
       showCard(this._text, this._image);
     });
   }
 
   generateCard() {
-    this._element = this._getTemplate();
+    this._card = this._getTemplate();
     this._setEventListeners();
-    this._element.querySelector('.element__image').src = this._image;
-    this._element.querySelector('.element__image').alt = this._text;
-    this._element.querySelector('.element__name').textContent = this._text;
+    this._card.querySelector('.card__image').src = this._image;
+    this._card.querySelector('.card__image').alt = this._text;
+    this._card.querySelector('.card__name').textContent = this._text;
 
-    return this._element;
+    return this._card;
   }
 }

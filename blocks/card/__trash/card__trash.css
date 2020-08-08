@@ -1,5 +1,8 @@
-﻿.element__like{
-  background: url(./../../../images/like.svg) no-repeat center center;
+﻿.card__trash{
+  background: url(./../../../images/trash.svg) no-repeat center center;
+  position: absolute;
+  top: 18px;
+  right: 18px;
   background-size: contain;
   outline: none;
   border: none;
@@ -8,8 +11,7 @@
   height: 19px;
   padding: 0;
 }
-
-.element__like:hover {
+.card__trash:hover {
   opacity: 0.6;
   cursor: pointer;
 }

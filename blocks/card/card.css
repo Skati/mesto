@@ -1,0 +1,14 @@
+﻿@import url(./__description/card__description.css);
+@import url(./__image/card__image.css);
+@import url(./__like/card__like.css);
+@import url(./__name/card__name.css);
+@import url(./__like/_active/card__like_active.css);
+@import url(./__trash/card__trash.css);
+.card{
+  border-radius: 20px;
+  background: #FFFFFF;
+  overflow: hidden;
+  position: relative;
+  max-height: 362px;
+  height: 362px;
+}
