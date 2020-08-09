@@ -27,9 +27,14 @@ import Section from './Section.js';
 
 const ProfileValidation = new FormValidator(validateSettings, 'form[name="profile"]');
 const AddCardValidation = new FormValidator(validateSettings, 'form[name="add_card"]');
-const cardsList = new Section({
+// const cardsList = new Section({
+//   items:initialCards,
+//   renderer: (cardItem) => {
 
-});
+//   },
+// },
+//   cardListSelector
+// );
 
 function addCard(evt) {
   evt.preventDefault();
