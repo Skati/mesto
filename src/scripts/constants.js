@@ -31,3 +31,21 @@ export const validateSettings = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
+
+//редактирование профиля
+export const buttonEdit = document.querySelector('.profile__button_type_edit');
+export const editFormPopup = document.querySelector('.popup_type_profile');
+export const editFormSubmitButton = editFormPopup.querySelector('.popup__button_type_submit');
+export const profileName = document.querySelector('.profile__name');
+export const profileDescription = document.querySelector('.profile__description');
+export const nameInput = document.querySelector('.popup__input_type_name');
+export const jobInput = document.querySelector('.popup__input_type_description');
+//добавление карточек
+export const cardContainer = document.querySelector('.card-list');
+export const addCardPopup = document.querySelector('.popup_type_add-card');
+export const buttonAdd = document.querySelector('.profile__button_type_add');
+export const submitButtonAddCard = addCardPopup.querySelector('.popup__button_type_submit');
+export const imageLink = document.querySelector('.popup__input_type_image-link');
+export const imageName = document.querySelector('.popup__input_type_image-name');
+
+

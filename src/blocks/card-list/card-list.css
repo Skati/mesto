@@ -1,4 +1,4 @@
-﻿.elements{
+﻿.card-list{
   display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(282px, 1fr));
@@ -10,12 +10,12 @@
   list-style-type: none;
 }
 @media screen and (max-width: 1023px) {
-  .elements {
+  .card-list {
     padding:0 19px;
   }
 }
 @media screen and (max-width: 319px) {
-  .elements {
+  .card-list{
     padding:0;
   }
 }

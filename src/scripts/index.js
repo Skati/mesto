@@ -8,26 +8,28 @@ import {
 } from './utils.js';
 import {
   initialCards,
-  validateSettings
+  validateSettings,
+  buttonEdit,
+  editFormPopup,
+  editFormSubmitButton,
+  profileName,
+  profileDescription,
+  nameInput,
+  jobInput,
+  cardContainer,
+  addCardPopup,
+  buttonAdd,
+  submitButtonAddCard,
+  imageLink,
+  imageName
 } from './constants.js';
-//редактирование профиля
-const buttonEdit = document.querySelector('.profile__button_type_edit');
-const editFormPopup = document.querySelector('.popup_type_profile');
-const editFormSubmitButton = editFormPopup.querySelector('.popup__button_type_submit');
-const profileName = document.querySelector('.profile__name');
-const profileDescription = document.querySelector('.profile__description');
-const nameInput = document.querySelector('.popup__input_type_name');
-const jobInput = document.querySelector('.popup__input_type_description');
-//добавление карточек
-const cardContainer = document.querySelector('.elements');
-const addCardPopup = document.querySelector('.popup_type_add-card');
-const buttonAdd = document.querySelector('.profile__button_type_add');
-const submitButtonAddCard = addCardPopup.querySelector('.popup__button_type_submit');
-const imageLink = document.querySelector('.popup__input_type_image-link');
-const imageName = document.querySelector('.popup__input_type_image-name');
-//classes
+import Section from './Section.js';
+
 const ProfileValidation = new FormValidator(validateSettings, 'form[name="profile"]');
 const AddCardValidation = new FormValidator(validateSettings, 'form[name="add_card"]');
+const cardsList = new Section({
+
+});
 
 function addCard(evt) {
   evt.preventDefault();
