@@ -45,7 +45,6 @@ export default class Card {
     this._card.querySelector('.card__image').src = this._image;
     this._card.querySelector('.card__image').alt = this._text;
     this._card.querySelector('.card__name').textContent = this._text;
-
     return this._card;
   }
 }

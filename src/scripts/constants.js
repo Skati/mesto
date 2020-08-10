@@ -41,7 +41,7 @@ export const profileDescription = document.querySelector('.profile__description'
 export const nameInput = document.querySelector('.popup__input_type_name');
 export const jobInput = document.querySelector('.popup__input_type_description');
 //добавление карточек
-export const cardContainer = document.querySelector('.card-list');
+export const cardListContainer = document.querySelector('.card-list');
 export const addCardPopup = document.querySelector('.popup_type_add-card');
 export const buttonAdd = document.querySelector('.profile__button_type_add');
 export const submitButtonAddCard = addCardPopup.querySelector('.popup__button_type_submit');

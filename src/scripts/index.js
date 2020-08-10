@@ -1,5 +1,6 @@
 ﻿import Card from './Card.js';
 import FormValidator from './FormValidator.js';
+import Section from './Section.js';
 import {
   openPopup,
   closePopup,
@@ -16,25 +17,28 @@ import {
   profileDescription,
   nameInput,
   jobInput,
-  cardContainer,
+  cardListContainer,
   addCardPopup,
   buttonAdd,
   submitButtonAddCard,
   imageLink,
   imageName
 } from './constants.js';
-import Section from './Section.js';
+
 
 const ProfileValidation = new FormValidator(validateSettings, 'form[name="profile"]');
 const AddCardValidation = new FormValidator(validateSettings, 'form[name="add_card"]');
-// const cardsList = new Section({
-//   items:initialCards,
-//   renderer: (cardItem) => {
 
-//   },
-// },
-//   cardListSelector
-// );
+const cardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const card = new Card(item.name, item.link);
+    const cardElement = card.generateCard();
+    cardList.addItem(cardElement);
+    },
+  },
+  cardListContainer
+);
 
 function addCard(evt) {
   evt.preventDefault();
@@ -44,13 +48,6 @@ function addCard(evt) {
   closePopup(addCardPopup);
 }
 
-function renderCards() {
-  initialCards.forEach((item) => {
-    const card = new Card(item.name, item.link);
-    const cardElement = card.generateCard();
-    cardContainer.prepend(cardElement);
-  });
-}
 
 buttonEdit.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
@@ -81,4 +78,4 @@ submitButtonAddCard.addEventListener('click', addCard);
 
 photoPopup.addEventListener('click', handleOverlayCrossButton);
 
-renderCards();
+cardList.rendererItems();
