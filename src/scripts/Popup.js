@@ -4,12 +4,12 @@
   }
   open(){
     this._popup.classList.add('popup_is-opened');
-    // document.addEventListener('keyup', this._handleEscClose);
+    this._popup.addEventListener('keyup', this._handleEscClose);
   }
 
   close(){
     this._popup.classList.remove('popup_is-opened');
-    // this._popup.removeEventListener('keyup', this._handleEscClose);
+    this._popup.removeEventListener('keyup', this._handleEscClose);
   }
 
   _handleEscClose(evt){
@@ -26,10 +26,11 @@
   }
 
   setEventListeners(){
-    this._popup.addEventListener('click', () => {
+    this._popup.addEventListener('click', (evt) => {
       console.log(this);
-      _handleEscClose();
-      _handleOverlayCrossButton();
+
+      // this._handleEscClose();
+      // this._handleOverlayCrossButton();
     });
 
   }

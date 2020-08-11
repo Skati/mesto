@@ -1,10 +1,8 @@
-﻿import {
-  showCard
-} from "./utils.js";
-export default class Card {
-  constructor(text, image) {
+﻿export default class Card {
+  constructor(text, image, handleCardClick) {
     this._text = text;
     this._image = image;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -25,6 +23,10 @@ export default class Card {
     this._card.remove();
   }
 
+  _showCard() {
+    this._handleCardClick({ image: this._image, text: this._text });
+  }
+
   _setEventListeners() {
     this._card.querySelector('.card__like').addEventListener('click', () => {
       this._like();
@@ -34,9 +36,7 @@ export default class Card {
       this._deleteCard();
     });
 
-    this._card.querySelector('.card__image').addEventListener('click', () => {
-      showCard(this._text, this._image);
-    });
+    this._card.querySelector('.card__image').addEventListener('click', () => this._showCard());
   }
 
   generateCard() {

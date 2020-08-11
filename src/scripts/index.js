@@ -1,12 +1,14 @@
 ﻿import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 import Section from './Section.js';
-import {
-  openPopup,
-  closePopup,
-  handleOverlayCrossButton,
-  photoPopup
-} from './utils.js';
+import PopupWithImage from './PopupWithImage.js';
+
+// import {
+//   openPopup,
+//   closePopup,
+//   handleOverlayCrossButton,
+//   photoPopup
+// } from './utils.js';
 import {
   initialCards,
   validateSettings,
@@ -40,42 +42,43 @@ const cardList = new Section({
   cardListContainer
 );
 
-function addCard(evt) {
-  evt.preventDefault();
-  const card = new Card(imageName.value, imageLink.value);
-  const cardElement = card.generateCard();
-  cardContainer.prepend(cardElement);
-  closePopup(addCardPopup);
-}
+// const imagePopup = new PopupWithImage('.popup_type_photo');
+// imagePopup.open();
+// function addCard(evt) {
+//   evt.preventDefault();
+//   const card = new Card(imageName.value, imageLink.value);
+//   const cardElement = card.generateCard();
+//   cardContainer.prepend(cardElement);
+//   closePopup(addCardPopup);
+// }
 
+// buttonEdit.addEventListener('click', () => {
+//   nameInput.value = profileName.textContent;
+//   jobInput.value = profileDescription.textContent;
+//   ProfileValidation.enableValidation();
+//   openPopup(editFormPopup);
+// });
 
-buttonEdit.addEventListener('click', () => {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileDescription.textContent;
-  ProfileValidation.enableValidation();
-  openPopup(editFormPopup);
-});
+// editFormSubmitButton.addEventListener('click', (evt) => {
+//   evt.preventDefault();
+//   profileName.textContent = nameInput.value;
+//   profileDescription.textContent = jobInput.value;
+//   closePopup(editFormPopup);
+// });
 
-editFormSubmitButton.addEventListener('click', (evt) => {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileDescription.textContent = jobInput.value;
-  closePopup(editFormPopup);
-});
+// editFormPopup.addEventListener('click', handleOverlayCrossButton);
 
-editFormPopup.addEventListener('click', handleOverlayCrossButton);
+// buttonAdd.addEventListener('click', () => {
+//   imageLink.value = '';
+//   imageName.value = '';
+//   openPopup(addCardPopup);
+//   AddCardValidation.enableValidation();
+// });
 
-buttonAdd.addEventListener('click', () => {
-  imageLink.value = '';
-  imageName.value = '';
-  openPopup(addCardPopup);
-  AddCardValidation.enableValidation();
-});
+// addCardPopup.addEventListener('click', handleOverlayCrossButton);
 
-addCardPopup.addEventListener('click', handleOverlayCrossButton);
+// submitButtonAddCard.addEventListener('click', addCard);
 
-submitButtonAddCard.addEventListener('click', addCard);
-
-photoPopup.addEventListener('click', handleOverlayCrossButton);
+// photoPopup.addEventListener('click', handleOverlayCrossButton);
 
 cardList.rendererItems();
