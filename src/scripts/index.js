@@ -30,15 +30,21 @@ import {
 
 const ProfileValidation = new FormValidator(validateSettings, 'form[name="profile"]');
 const AddCardValidation = new FormValidator(validateSettings, 'form[name="add_card"]');
+const popupPreview = new PopupWithImage('.popup_type_photo');
+
 
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item.name, item.link);
+    const card = new Card(item.name, item.link,(item)=>{
+      popupPreview.open(item);
+    });
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
     },
+
   },
+
   cardListContainer
 );
 

@@ -29,8 +29,8 @@
     this._popup.addEventListener('click', (evt) => {
       console.log(this);
 
-      // this._handleEscClose();
-      // this._handleOverlayCrossButton();
+      this._handleEscClose();
+      this._handleOverlayCrossButton();
     });
 
   }
