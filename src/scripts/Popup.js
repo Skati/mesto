@@ -1,38 +1,36 @@
 ﻿﻿export default class Popup{
-  constructor(popupSelector){
-    this._popup = document.querySelector(popupSelector);
+  constructor(containerSelector){
+    this._popup = document.querySelector(containerSelector);
+    this._handleEscClose = this._handleEscClose.bind(this);
+
   }
   open(){
     this._popup.classList.add('popup_is-opened');
-    this._popup.addEventListener('keyup', this._handleEscClose);
+    document.addEventListener('keyup', this._handleEscClose);
   }
 
   close(){
     this._popup.classList.remove('popup_is-opened');
-    this._popup.removeEventListener('keyup', this._handleEscClose);
+    document.removeEventListener('keyup', this._handleEscClose);
   }
 
-  _handleEscClose(evt){
-    const activePopup = document.querySelector('.popup_is-opened');
-    if (evt.code === 'Escape' && activePopup) {
-      close();
+  _handleEscClose(evt) {
+    if (evt.key === 'Escape') {
+      this.close();
+
     }
-  }
+}
   _handleOverlayCrossButton(evt) {
-    const activePopup = document.querySelector('.popup_is-opened');
     if (evt.target.classList.contains('popup_is-opened') || evt.target.classList.contains('popup__button_type_close')) {
-      close();
+      this.close();
     }
   }
 
   setEventListeners(){
-    this._popup.addEventListener('click', (evt) => {
-      console.log(this);
-
-      this._handleEscClose();
-      this._handleOverlayCrossButton();
-    });
-
+    this._popup.addEventListener('click',(evt)=>{
+      this._handleOverlayCrossButton(evt);
+    })
   }
+
 }
-//TODO проверить листенеры
+

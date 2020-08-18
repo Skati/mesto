@@ -2,13 +2,8 @@
 import FormValidator from './FormValidator.js';
 import Section from './Section.js';
 import PopupWithImage from './PopupWithImage.js';
+import PopupWithForm from './PopupWithForm.js';
 
-// import {
-//   openPopup,
-//   closePopup,
-//   handleOverlayCrossButton,
-//   photoPopup
-// } from './utils.js';
 import {
   initialCards,
   validateSettings,
@@ -30,14 +25,34 @@ import {
 
 const ProfileValidation = new FormValidator(validateSettings, 'form[name="profile"]');
 const AddCardValidation = new FormValidator(validateSettings, 'form[name="add_card"]');
-const popupPreview = new PopupWithImage('.popup_type_photo');
+const ImagePopup = new PopupWithImage('.popup_type_photo');
+const AddCardPopup = new PopupWithForm('.popup_type_add-card', ()=>{
+  // const card = new Card(item.name, item.link,(item)=>{
+  //   // ImagePopup.open(item);
+  //   // ImagePopup.setEventListeners();
+  //   console.log(item);
+  // });
+  console.log(AddCardPopup._getInputValues);
 
+});
+const UserPopup = new PopupWithForm('.popup_type_profile', ()=>{
+  // const card = new Card(item.name, item.link,(item)=>{
+  //   // ImagePopup.open(item);
+  //   // ImagePopup.setEventListeners();
+  //   console.log(item);
+  // });
+
+});
+
+AddCardPopup.setEventListeners();
+UserPopup.setEventListeners();
 
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
     const card = new Card(item.name, item.link,(item)=>{
-      popupPreview.open(item);
+      ImagePopup.open(item);
+      ImagePopup.setEventListeners();
     });
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
@@ -48,8 +63,6 @@ const cardList = new Section({
   cardListContainer
 );
 
-// const imagePopup = new PopupWithImage('.popup_type_photo');
-// imagePopup.open();
 // function addCard(evt) {
 //   evt.preventDefault();
 //   const card = new Card(imageName.value, imageLink.value);
@@ -58,12 +71,14 @@ const cardList = new Section({
 //   closePopup(addCardPopup);
 // }
 
-// buttonEdit.addEventListener('click', () => {
-//   nameInput.value = profileName.textContent;
-//   jobInput.value = profileDescription.textContent;
-//   ProfileValidation.enableValidation();
-//   openPopup(editFormPopup);
-// });
+buttonEdit.addEventListener('click', () => {
+  // nameInput.value = profileName.textContent;
+  // jobInput.value = profileDescription.textContent;
+
+  ProfileValidation.enableValidation();
+  UserPopup.open();
+  console.log(UserPopup._inputValues);
+});
 
 // editFormSubmitButton.addEventListener('click', (evt) => {
 //   evt.preventDefault();
@@ -72,19 +87,9 @@ const cardList = new Section({
 //   closePopup(editFormPopup);
 // });
 
-// editFormPopup.addEventListener('click', handleOverlayCrossButton);
-
-// buttonAdd.addEventListener('click', () => {
-//   imageLink.value = '';
-//   imageName.value = '';
-//   openPopup(addCardPopup);
-//   AddCardValidation.enableValidation();
-// });
-
-// addCardPopup.addEventListener('click', handleOverlayCrossButton);
-
-// submitButtonAddCard.addEventListener('click', addCard);
-
-// photoPopup.addEventListener('click', handleOverlayCrossButton);
+buttonAdd.addEventListener('click', () => {
+  AddCardPopup.open();
+  AddCardValidation.enableValidation();
+});
 
 cardList.rendererItems();
