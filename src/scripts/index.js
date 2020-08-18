@@ -26,26 +26,8 @@ import {
 const ProfileValidation = new FormValidator(validateSettings, 'form[name="profile"]');
 const AddCardValidation = new FormValidator(validateSettings, 'form[name="add_card"]');
 const ImagePopup = new PopupWithImage('.popup_type_photo');
-const AddCardPopup = new PopupWithForm('.popup_type_add-card', ()=>{
-  // const card = new Card(item.name, item.link,(item)=>{
-  //   // ImagePopup.open(item);
-  //   // ImagePopup.setEventListeners();
-  //   console.log(item);
-  // });
-  console.log(AddCardPopup._getInputValues);
 
-});
-const UserPopup = new PopupWithForm('.popup_type_profile', ()=>{
-  // const card = new Card(item.name, item.link,(item)=>{
-  //   // ImagePopup.open(item);
-  //   // ImagePopup.setEventListeners();
-  //   console.log(item);
-  // });
-
-});
-
-AddCardPopup.setEventListeners();
-UserPopup.setEventListeners();
+// UserPopup.setEventListeners();
 
 const cardList = new Section({
   items: initialCards,
@@ -63,6 +45,20 @@ const cardList = new Section({
   cardListContainer
 );
 
+const AddCardPopup = new PopupWithForm('.popup_type_add-card', ()=>{
+  const card = new Card(imageName.value,imageLink.value,(item)=>{
+    ImagePopup.open(item);
+    ImagePopup.setEventListeners();
+    console.log('1');
+
+  });
+  const cardElement = card.generateCard();
+  cardList.addItem(cardElement);
+  // AddCardPopup.close();
+});//вынести в функцию, какой-то косяк с повторным добавлением
+const UserPopup = new PopupWithForm('.popup_type_profile', ()=>{
+  // const userInfo = new UserInfo({username: '.popup__input_type_name',userDescription:'.popup__input_type_description'});
+});
 // function addCard(evt) {
 //   evt.preventDefault();
 //   const card = new Card(imageName.value, imageLink.value);
@@ -89,7 +85,9 @@ buttonEdit.addEventListener('click', () => {
 
 buttonAdd.addEventListener('click', () => {
   AddCardPopup.open();
+  AddCardPopup.setEventListeners();
   AddCardValidation.enableValidation();
+
 });
 
 cardList.rendererItems();
