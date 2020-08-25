@@ -5,10 +5,16 @@
   }
 
   getUserInfo(){
-    return {name:this._userName, info: this._userDescription}//хз косяк
+    console.log(this._userName);
+    return {name:this._userName.textContent, info: this._userDescription.textContent};
+    // document.querySelector('.popup__input_type_name').value = this._userName.textContent;
+    // document.querySelector('.popup__input_type_decription').value = this._userDescription.textContent;
+
   }
 
   setUserInfo(){
-
+    this._userName.textContent = document.querySelector('.popup__input_type_name').value;
+    this._userDescription.textContent = document.querySelector('.popup__input_type_description').value;
+    console.log(this._userName.textContent);
   }
 }
