@@ -13,10 +13,7 @@ export default class PopupWithForm extends Popup{
     this._inputValues = {};
     this._inputList = this._form.querySelectorAll('.popup__input');
     this._inputList.foreach((input) => {
-      // this._inputValues[input.name] = input.value
-      console.log(input);
-    });//тут косяк
-    // console.log(this._inputValues);
+    });
     return this._inputValues;
 
   }
