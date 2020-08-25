@@ -1,9 +1,10 @@
-﻿import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-import Section from './Section.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
+﻿import Card from '../scripts/Card.js';
+import FormValidator from '../scripts/FormValidator.js';
+import Section from '../scripts/Section.js';
+import PopupWithImage from '../scripts/PopupWithImage.js';
+import PopupWithForm from '../scripts/PopupWithForm.js';
+import UserInfo from '../scripts/UserInfo.js';
+// import './index.css';
 import {
   initialCards,
   validateSettings,
@@ -17,7 +18,7 @@ import {
   buttonAdd,
   imageLink,
   imageName
-} from './constants.js';
+} from '../scripts/constants.js';
 
 
 const ProfileValidation = new FormValidator(validateSettings, 'form[name="profile"]');
