@@ -1,0 +1,30 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "8 project yandex praktikum",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack",
+    "dev": "webpack-dev-server --open --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skati/mesto.git"
+  },
+  "author": "Sergey Drozdov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Skati/mesto/issues"
+  },
+  "homepage": "https://github.com/Skati/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5"
+  }
+}
