@@ -27,26 +27,26 @@
     }
   }
 
-  _hasInvalidInput = () => {
+  _hasInvalidInput(){
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
-  };
+  }
 
-  _checkInputValidity = (inputElement) => {
+  _checkInputValidity(inputElement){
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
     } else {
       this._hideInputError(inputElement);
     }
-  };
+  }
 
-  _showInputError = (inputElement) => {
+  _showInputError(inputElement){
     const errorElement = this._element.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
     errorElement.classList.add(this._errorClass);
     errorElement.textContent = inputElement.validationMessage;
-  };
+  }
 
   _hideInputError(inputElement) {
     const errorElement = this._element.querySelector(`#${inputElement.id}-error`);
@@ -54,6 +54,7 @@
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = "";
   }
+
   _resetForm() {
     const errorInputs = Array.from(this._element.querySelectorAll('.popup__input_type_error'));
     const errorMessages = Array.from(this._element.querySelectorAll('.popup__error_visible'));
