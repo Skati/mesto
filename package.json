@@ -4,6 +4,7 @@
   "description": "8 project",
   "main": "babel.config.js",
   "dependencies": {
+    "webpack-dev-server": "3.11.0",
     "ajv-errors": "^1.0.1",
     "ajv-keywords": "^3.5.2",
     "alphanum-sort": "^1.0.2",

@@ -45,4 +45,4 @@ module.exports = {
     new MiniCssExtractPlugin()
   ]
 };
-//конфиг не загружался, поэтому косяк со шрифтами был
+
