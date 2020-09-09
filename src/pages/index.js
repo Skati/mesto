@@ -18,7 +18,7 @@ import {
   buttonAdd,
   imageLink,
   imageName,
-} from "../components/constants.js";
+} from "../utils/utils.js";
 
 const ProfileValidation = new FormValidator(
   validateSettings,
