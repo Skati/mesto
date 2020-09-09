@@ -27,13 +27,13 @@
     }
   }
 
-  _hasInvalidInput(){
+  _hasInvalidInput() {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
 
-  _checkInputValidity(inputElement){
+  _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
     } else {
@@ -41,7 +41,7 @@
     }
   }
 
-  _showInputError(inputElement){
+  _showInputError(inputElement) {
     const errorElement = this._element.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
     errorElement.classList.add(this._errorClass);
@@ -56,8 +56,8 @@
   }
 
   _resetForm() {
-    const errorInputs = Array.from(this._element.querySelectorAll('.popup__input_type_error'));
-    const errorMessages = Array.from(this._element.querySelectorAll('.popup__error_visible'));
+    const errorInputs = [...this._element.querySelectorAll('.popup__input_type_error')];
+    const errorMessages = [...this._element.querySelectorAll('.popup__error_visible')];
     errorInputs.forEach(errorInput => {
       errorInput.classList.remove('popup__input_type_error');
     });
@@ -72,7 +72,7 @@
   }
 
   _setEventListeners() {
-    this._inputList = Array.from(this._element.querySelectorAll(this._inputSelector));
+    this._inputList = [...this._element.querySelectorAll(this._inputSelector)];
     this._buttonElement = this._element.querySelector(this._submitButtonSelector);
     this._actualizeButtonState();
     this._resetForm();
