@@ -4,7 +4,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import "./index.css";
+// import "./index.css";
 import {
   initialCards,
   validateSettings,
@@ -44,7 +44,7 @@ const userPopup = new PopupWithForm(".popup_type_profile", () => {
 function createCard(name, link) {
   const card = new Card(name, link, (item) => {
     imagePopup.open(item);
-  });
+  },'#card-template');
   const cardElement = card.generateCard();
   cardList.addItem(cardElement);
 }
