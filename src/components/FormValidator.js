@@ -86,10 +86,11 @@
 
   enableValidation() {
     this._element = this._getTemplate();
+    this._setEventListeners();
     this._element.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-    this._setEventListeners();
+
     return this._element;
   }
 }

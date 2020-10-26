@@ -4,7 +4,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import "./index.css";
+// import "./index.css";
 import {
   initialCards,
   validateSettings,
@@ -29,7 +29,6 @@ const AddCardValidation = new FormValidator(
   validateSettings,
   'form[name="add_card"]'
 );
-AddCardValidation.enableValidation();
 const imagePopup = new PopupWithImage(".popup_type_photo");
 imagePopup.setEventListeners();
 
@@ -81,7 +80,7 @@ editFormPopup.addEventListener("submit", () => {
 
 buttonAdd.addEventListener("click", () => {
   AddCardPopup.open();
-
+  AddCardValidation.enableValidation();
 });
 
 cardList.rendererItems();
