@@ -8,8 +8,8 @@
     return {name:this._userName.textContent, info: this._userDescription.textContent};
   }
 
-  setUserInfo(){
-    this._userName.textContent = document.querySelector('.popup__input_type_name').value;
-    this._userDescription.textContent = document.querySelector('.popup__input_type_description').value;
+  setUserInfo({name,job}){
+    this._userName.textContent = name.value;
+    this._userDescription.textContent = job.value;
   }
 }

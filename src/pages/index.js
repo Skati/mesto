@@ -4,7 +4,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-// import "./index.css";
+import "./index.css";
 import {
   initialCards,
   validateSettings,
@@ -17,7 +17,7 @@ import {
   cardListContainer,
   buttonAdd,
   imageLink,
-  imageName,
+  imageName
 } from "../utils/utils.js";
 
 const ProfileValidation = new FormValidator(
@@ -29,6 +29,7 @@ const AddCardValidation = new FormValidator(
   validateSettings,
   'form[name="add_card"]'
 );
+AddCardValidation.enableValidation();
 const imagePopup = new PopupWithImage(".popup_type_photo");
 imagePopup.setEventListeners();
 
@@ -38,7 +39,7 @@ const userInfo = new UserInfo({
 });
 
 const userPopup = new PopupWithForm(".popup_type_profile", () => {
-  userInfo.setUserInfo();
+  userInfo.setUserInfo({name:nameInput,job:jobInput});
 });
 
 function createCard(name, link) {
@@ -74,13 +75,13 @@ buttonEdit.addEventListener("click", () => {
 });
 
 editFormPopup.addEventListener("submit", () => {
-  userInfo.setUserInfo();
+  // userInfo.setUserInfo({name:nameInput,job:jobInput});
   userPopup.close();
 });
 
 buttonAdd.addEventListener("click", () => {
   AddCardPopup.open();
-  AddCardValidation.enableValidation();
+
 });
 
 cardList.rendererItems();

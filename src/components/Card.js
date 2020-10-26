@@ -12,9 +12,6 @@
       .content
       .querySelector('.card')
       .cloneNode(true);
-    // this._cardSelector.content
-    //   .querySelector('.card')
-    //   .cloneNode(true);
 
     return cardElement;
   }
@@ -45,9 +42,10 @@
 
   generateCard() {
     this._card = this._getTemplate();
+    const cardImage = this._card.querySelector('.card__image');
     this._setEventListeners();
-    this._card.querySelector('.card__image').src = this._link;
-    this._card.querySelector('.card__image').alt = this._name;
+    cardImage.src = this._link;
+    cardImage.alt = this._name;
     this._card.querySelector('.card__name').textContent = this._name;
     return this._card;
   }
