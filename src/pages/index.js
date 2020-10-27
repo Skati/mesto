@@ -24,13 +24,16 @@ const ProfileValidation = new FormValidator(
   validateSettings,
   'form[name="profile"]'
 );
-ProfileValidation.enableValidation();
+
 const AddCardValidation = new FormValidator(
   validateSettings,
   'form[name="add_card"]'
 );
+
+ProfileValidation.enableValidation();
+AddCardValidation.enableValidation();
+
 const imagePopup = new PopupWithImage(".popup_type_photo");
-imagePopup.setEventListeners();
 
 const userInfo = new UserInfo({
   userName: profileName,
@@ -38,13 +41,25 @@ const userInfo = new UserInfo({
 });
 
 const userPopup = new PopupWithForm(".popup_type_profile", () => {
-  userInfo.setUserInfo({name:nameInput,job:jobInput});
+  userInfo.setUserInfo({
+    name: nameInput,
+    job: jobInput
+  });
 });
+
+const addCardPopup = new PopupWithForm(".popup_type_add-card", () => {
+  createCard(imageName.value, imageLink.value);
+  addCardPopup.close();
+});
+
+imagePopup.setEventListeners();
+addCardPopup.setEventListeners();
+userPopup.setEventListeners();
 
 function createCard(name, link) {
   const card = new Card(name, link, (item) => {
     imagePopup.open(item);
-  },'#card-template');
+  }, '#card-template');
   const cardElement = card.generateCard();
   cardList.addItem(cardElement);
 }
@@ -58,19 +73,13 @@ const cardList = new Section({
   cardListContainer
 );
 
-const AddCardPopup = new PopupWithForm(".popup_type_add-card", () => {
-  createCard(imageName.value, imageLink.value);
-  AddCardPopup.close();
-});
-
-AddCardPopup.setEventListeners();
-
 buttonEdit.addEventListener("click", () => {
   const info = userInfo.getUserInfo();
   nameInput.value = info.name;
   jobInput.value = info.info;
   userPopup.open();
-  userPopup.setEventListeners();
+  ProfileValidation.resetForm();
+
 });
 
 editFormPopup.addEventListener("submit", () => {
@@ -79,8 +88,8 @@ editFormPopup.addEventListener("submit", () => {
 });
 
 buttonAdd.addEventListener("click", () => {
-  AddCardPopup.open();
-  AddCardValidation.enableValidation();
+  addCardPopup.open();
+  AddCardValidation.resetForm();
 });
 
 cardList.rendererItems();
