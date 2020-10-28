@@ -20,18 +20,18 @@ import {
   imageName
 } from "../utils/utils.js";
 
-const ProfileValidation = new FormValidator(
+const profileValidation = new FormValidator(
   validateSettings,
   'form[name="profile"]'
 );
 
-const AddCardValidation = new FormValidator(
+const addCardValidation = new FormValidator(
   validateSettings,
   'form[name="add_card"]'
 );
 
-ProfileValidation.enableValidation();
-AddCardValidation.enableValidation();
+profileValidation.enableValidation();
+addCardValidation.enableValidation();
 
 const imagePopup = new PopupWithImage(".popup_type_photo");
 
@@ -78,7 +78,7 @@ buttonEdit.addEventListener("click", () => {
   nameInput.value = info.name;
   jobInput.value = info.info;
   userPopup.open();
-  ProfileValidation.resetForm();
+  profileValidation.resetForm();
 
 });
 
@@ -89,7 +89,8 @@ editFormPopup.addEventListener("submit", () => {
 
 buttonAdd.addEventListener("click", () => {
   addCardPopup.open();
-  AddCardValidation.resetForm();
+  addCardValidation.resetForm();
+  addCardValidation.disableButtonState();
 });
 
 cardList.rendererItems();

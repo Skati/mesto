@@ -37,7 +37,7 @@
     });
   }
 
-  _disableButtonState() {
+  disableButtonState() {
     this._buttonElement.classList.add(this._inactiveButtonClass);
     this._buttonElement.disabled = true;
 
@@ -50,7 +50,7 @@
 
   _actualizeButtonState() {
     if (this._hasInvalidInput()) {
-      this._disableButtonState();
+      this.disableButtonState();
     } else {
       this._enableButtonState();
     }
