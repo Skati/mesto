@@ -1,12 +1,25 @@
 ﻿.profile__avatar{
   max-width: 120px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  margin-right: 30px;
+  object-fit: cover;
+  background: center no-repeat;
+  background-size: cover;
+  position: relative;
+  cursor: pointer;
+  background-image: url(../../../images/avatar.jpg);
 }
+
+.profile__avatar:hover .profile__avatar-button {
+  display: block;
+  background-image: url(../../../images/pen.svg) rgba(0, 0, 0, .8) center no-repeat;
+}
+
 @media screen and (max-width: 920px) {
   .profile__avatar {
     margin: 0 auto;
-
   }
 }
+
 

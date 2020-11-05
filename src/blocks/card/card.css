@@ -4,6 +4,7 @@
 @import url(./__name/card__name.css);
 @import url(./__like/_active/card__like_active.css);
 @import url(./__trash/card__trash.css);
+@import url(./__like-count/card__like-count.css);
 .card{
   border-radius: 20px;
   background: #FFFFFF;
