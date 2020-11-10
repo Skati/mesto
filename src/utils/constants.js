@@ -31,7 +31,11 @@ export const validateSettings = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
-
+export const apiConfig = {
+  address: 'https://mesto.nomoreparties.co/v1',
+  groupId: `cohort-17`,
+  token: `741ae5d6-8517-4b26-96a9-11c24cc6935d`,
+}
 //редактирование профиля
 export const buttonEdit = document.querySelector('.profile__button_type_edit');
 export const editFormPopup = document.querySelector('.popup_type_profile');
@@ -47,5 +51,6 @@ export const buttonAdd = document.querySelector('.profile__button_type_add');
 export const submitButtonAddCard = addCardPopup.querySelector('.popup__button_type_submit');
 export const imageLink = document.querySelector('.popup__input_type_image-link');
 export const imageName = document.querySelector('.popup__input_type_image-name');
+export const profileAvatar = document.querySelector('profile__avatar');
 
 

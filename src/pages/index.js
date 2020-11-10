@@ -1,9 +1,10 @@
-﻿﻿import Card from "../components/Card.js";
+﻿import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 // import "./index.css";
 import {
   initialCards,
@@ -17,8 +18,34 @@ import {
   cardListContainer,
   buttonAdd,
   imageLink,
-  imageName
-} from "../utils/utils.js";
+  imageName,
+  apiConfig,
+  profileAvatar
+} from "../utils/constants.js";
+
+const api = new Api(apiConfig);
+const userInfo = new UserInfo({
+  userName: profileName,
+  userDescription: profileDescription,
+  userAvatar:profileAvatar
+});
+
+const userPopup = new PopupWithForm(".popup_type_profile", () => {
+  userInfo.setUserInfo({
+    name: nameInput,
+    job: jobInput
+  });
+});
+
+console.log(api.getUserInfo());
+// Promise.all([api.getUserInfo(), api.getInitialCards()])
+//   .then(([data, items]) => {
+//     user.setUserInfo(data);
+//     user.setAvatar(data);
+//     starterCards.renderItems(items);
+//   })
+//   .catch((err) => console.log(err));
+
 
 const profileValidation = new FormValidator(
   validateSettings,
@@ -35,17 +62,9 @@ addCardValidation.enableValidation();
 
 const imagePopup = new PopupWithImage(".popup_type_photo");
 
-const userInfo = new UserInfo({
-  userName: profileName,
-  userDescription: profileDescription,
-});
 
-const userPopup = new PopupWithForm(".popup_type_profile", () => {
-  userInfo.setUserInfo({
-    name: nameInput,
-    job: jobInput
-  });
-});
+
+
 
 const addCardPopup = new PopupWithForm(".popup_type_add-card", () => {
   createCard(imageName.value, imageLink.value);
