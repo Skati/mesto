@@ -37,7 +37,7 @@ const userPopup = new PopupWithForm(".popup_type_profile", () => {
   });
 });
 
-console.log(api.getUserInfo());
+console.log(api);
 // Promise.all([api.getUserInfo(), api.getInitialCards()])
 //   .then(([data, items]) => {
 //     user.setUserInfo(data);
