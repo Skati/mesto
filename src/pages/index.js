@@ -29,60 +29,17 @@ const userInfo = new UserInfo({
   userDescription: profileDescription,
   userAvatar:profileAvatar
 });
-
 const userPopup = new PopupWithForm(".popup_type_profile", () => {
   userInfo.setUserInfo({
     name: nameInput,
     job: jobInput
   });
 });
-
-console.log(api);
-// Promise.all([api.getUserInfo(), api.getInitialCards()])
-//   .then(([data, items]) => {
-//     user.setUserInfo(data);
-//     user.setAvatar(data);
-//     starterCards.renderItems(items);
-//   })
-//   .catch((err) => console.log(err));
-
-
-const profileValidation = new FormValidator(
-  validateSettings,
-  'form[name="profile"]'
-);
-
-const addCardValidation = new FormValidator(
-  validateSettings,
-  'form[name="add_card"]'
-);
-
-profileValidation.enableValidation();
-addCardValidation.enableValidation();
-
 const imagePopup = new PopupWithImage(".popup_type_photo");
-
-
-
-
-
 const addCardPopup = new PopupWithForm(".popup_type_add-card", () => {
   createCard(imageName.value, imageLink.value);
   addCardPopup.close();
 });
-
-imagePopup.setEventListeners();
-addCardPopup.setEventListeners();
-userPopup.setEventListeners();
-
-function createCard(name, link) {
-  const card = new Card(name, link, (item) => {
-    imagePopup.open(item);
-  }, '#card-template');
-  const cardElement = card.generateCard();
-  cardList.addItem(cardElement);
-}
-
 const cardList = new Section({
     items: initialCards,
     renderer: (item) => {
@@ -91,6 +48,31 @@ const cardList = new Section({
   },
   cardListContainer
 );
+// Promise.all([api.getCardList(), api.getUserInfo()])
+//   .then(([cards, userData]) => {
+//       userInfo.setUserInfo({
+//       userName: userData.name,
+//       userDescription: userData.about,
+//       userAvatar: userData.avatar
+//     });
+//
+//     cardList.rendererItems(cards.reverse());
+//   })
+//   .catch(err => console.log(`Ошибка загрузки данных: ${err}`))
+
+const profileValidation = new FormValidator(
+  validateSettings,
+  'form[name="profile"]'
+);
+
+const addCardValidation = new FormValidator(
+  validateSettings,'form[name="add_card"]'
+);
+profileValidation.enableValidation();
+addCardValidation.enableValidation();
+imagePopup.setEventListeners();
+addCardPopup.setEventListeners();
+userPopup.setEventListeners();
 
 buttonEdit.addEventListener("click", () => {
   const info = userInfo.getUserInfo();
@@ -111,5 +93,13 @@ buttonAdd.addEventListener("click", () => {
   addCardValidation.resetForm();
   addCardValidation.disableButtonState();
 });
+
+function createCard(name, link) {
+  const card = new Card(name, link, (item) => {
+    imagePopup.open(item);
+  }, '#card-template');
+  const cardElement = card.generateCard();
+  cardList.addItem(cardElement);
+}
 
 cardList.rendererItems();

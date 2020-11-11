@@ -12,6 +12,7 @@
   setUserInfo({name,job}){
     this._userName.textContent = name.value;
     this._userDescription.textContent = job.value;
+    this._userAvatar.style.backgroundImage = `url(${avatar})`;
 
   }
 }
