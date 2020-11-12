@@ -1,10 +1,10 @@
-﻿﻿export default class Section{
+﻿export default class Section{
   constructor({items, renderer},container){
     this._initialArray = items;
     this._renderer = renderer;
     this._container = container;//изменить на селектор
   }
-  rendererItems(){
+  renderItems(){
     this._initialArray.forEach(item => this._renderer(item));
   }
 

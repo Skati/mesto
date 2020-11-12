@@ -6,13 +6,13 @@
   }
 
   getUserInfo(){
-    return {name:this._userName.textContent, info: this._userDescription.textContent,avatar:this._userAvatar};
+    return {userName:this._userName.textContent, userDescription:this._userDescription.textContent,userAvatar:this._userAvatar.backgroundImage};
   }
 
-  setUserInfo({name,job}){
-    this._userName.textContent = name.value;
-    this._userDescription.textContent = job.value;
-    this._userAvatar.style.backgroundImage = `url(${avatar})`;
+  setUserInfo({userName,userDescription,userAvatar}){
+    this._userName.textContent = userName;
+    this._userDescription.textContent = userDescription;
+    this._userAvatar.style.backgroundImage = `url(${userAvatar})`;
 
   }
 }

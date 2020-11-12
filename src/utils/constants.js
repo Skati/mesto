@@ -42,7 +42,7 @@ export const editFormPopup = document.querySelector('.popup_type_profile');
 export const editFormSubmitButton = editFormPopup.querySelector('.popup__button_type_submit');
 export const profileName = document.querySelector('.profile__name');
 export const profileDescription = document.querySelector('.profile__description');
-export const profileAvatar = document.querySelector('profile__avatar');
+export const profileAvatar = document.querySelector('.profile__avatar');
 
 export const nameInput = document.querySelector('.popup__input_type_name');
 export const jobInput = document.querySelector('.popup__input_type_description');

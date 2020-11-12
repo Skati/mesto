@@ -29,37 +29,6 @@ const userInfo = new UserInfo({
   userDescription: profileDescription,
   userAvatar:profileAvatar
 });
-const userPopup = new PopupWithForm(".popup_type_profile", () => {
-  userInfo.setUserInfo({
-    name: nameInput,
-    job: jobInput
-  });
-});
-const imagePopup = new PopupWithImage(".popup_type_photo");
-const addCardPopup = new PopupWithForm(".popup_type_add-card", () => {
-  createCard(imageName.value, imageLink.value);
-  addCardPopup.close();
-});
-const cardList = new Section({
-    items: initialCards,
-    renderer: (item) => {
-      createCard(item.name, item.link);
-    },
-  },
-  cardListContainer
-);
-// Promise.all([api.getCardList(), api.getUserInfo()])
-//   .then(([cards, userData]) => {
-//       userInfo.setUserInfo({
-//       userName: userData.name,
-//       userDescription: userData.about,
-//       userAvatar: userData.avatar
-//     });
-//
-//     cardList.rendererItems(cards.reverse());
-//   })
-//   .catch(err => console.log(`Ошибка загрузки данных: ${err}`))
-
 const profileValidation = new FormValidator(
   validateSettings,
   'form[name="profile"]'
@@ -70,11 +39,59 @@ const addCardValidation = new FormValidator(
 );
 profileValidation.enableValidation();
 addCardValidation.enableValidation();
-imagePopup.setEventListeners();
-addCardPopup.setEventListeners();
+
+
+let userId = null;
+Promise.all([ api.getUserInfo(),api.getCardList()])
+  .then(([userData, cards]) => {
+    userId = userData._id;
+    userInfo.setUserInfo({
+      userName: userData.name,
+      userDescription: userData.about,
+      userAvatar: userData.avatar
+    });
+    cardList.renderItems(cards.reverse());
+  })
+  .catch(err => console.log(`Ошибка загрузки данных: ${err}`))
+
+const userPopup = new PopupWithForm(".popup_type_profile", (data) => {
+  userPopup.renderLoading(true);
+  console.log(data);
+  api.setUserInfo({
+    name: data.userName,
+    about: data.userDescription
+  })
+    .then((info) => {
+      userInfo.setUserInfo({
+        userName: info.name,
+        userDescription: info.about,
+      })
+      userPopup.close();
+    })
+    .catch(err => console.log(`Ошибка при обновлении информации о пользователе: ${err}`))
+    .finally(() => userInfoPopup.renderLoading(false));
+});
 userPopup.setEventListeners();
 
-buttonEdit.addEventListener("click", () => {
+
+const imagePopup = new PopupWithImage(".popup_type_photo");
+imagePopup.setEventListeners();
+const addCardPopup = new PopupWithForm(".popup_type_add-card", () => {
+  createCard(imageName.value, imageLink.value);
+  addCardPopup.close();
+});
+addCardPopup.setEventListeners();
+const cardList = new Section({
+    items: initialCards,
+    renderer: (item) => {
+      createCard(item.name, item.link);
+    },
+  },
+  cardListContainer
+);
+
+
+buttonEdit.addEventListener("click", (data)=> {
   const info = userInfo.getUserInfo();
   nameInput.value = info.name;
   jobInput.value = info.info;
@@ -101,5 +118,3 @@ function createCard(name, link) {
   const cardElement = card.generateCard();
   cardList.addItem(cardElement);
 }
-
-cardList.rendererItems();

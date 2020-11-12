@@ -11,7 +11,7 @@
         authorization: this._token
       }
     })
-      .then(res => this._getResponse(res))
+      .then(res => this.getResponse(res))
   }
 
   addCard(name, link) {
@@ -31,7 +31,7 @@
         authorization: this._token
       }
     })
-      .then(res => this._getResponse)
+      .then(res => this.getResponse)
   }
 
   getUserInfo() {
@@ -40,20 +40,22 @@
         authorization: this._token
       }
     })
-      .then(res => this._getResponse(res))
+      .then(res => this.getResponse(res))
   }
 
-  changeUserInfo(name, about) {
-    return fetch(`${this._address}/${this._groupId / users / me}`, {
+  setUserInfo(name, about) {
+    return fetch(`${this._address}/${this._groupId}/users/me`, {
       method: 'Patch',
       headers: {
-        authorization: this._token
+        authorization: this._token,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         name: name,
         about: about
       })
     })
+      .then(res => this.getResponse(res))
   }
 
   changeAvatar(avatar){
@@ -76,7 +78,7 @@
         authorization: this._token
       }
     })
-      .then(res => this._getResponse(res))
+      .then(res => this.getResponse(res))
   }
 
   deleteLikedCard(cardId){
@@ -86,10 +88,12 @@
         authorization: this._token
       }
     })
-      .then(res => this._getResponse(res))
+      .then(res => this.getResponse(res))
   }
-
-  _getResponse(res) {
+  // getUserInfo(){
+  //   return Promise.all([getCardList(), getUserInfo()]);
+  // }
+  getResponse(res) {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
   }
 }
